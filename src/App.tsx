@@ -125,7 +125,7 @@ interface ApiResponse {
 
 function GetAPI() {
   const [data, setData] = useState<ApiResponse | null>(null)
-  const apiUrl = import.meta.env.VITE_API_URL + '/ping'
+  const apiUrl = import.meta.env.VITE_API_URL + 'ping'
 
   useEffect(() => {
     fetch(apiUrl)
