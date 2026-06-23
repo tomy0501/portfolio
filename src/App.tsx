@@ -131,13 +131,19 @@ function GetAPI() {
   }, [apiUrl])
 
   if (data) {
-    const message = data.message || 'No message received'
-    return (
-      <div>
-        <h2>API Data:</h2>
-        <pre>{JSON.stringify(message , null, 2)}</pre>
+    if ( typeof data === 'object' && data !== null && 'message' in data) {
+      return (<div>
+        <h2>API Response:</h2>
+        <p>{data.message}</p>
       </div>
-    )
+      )
+    } else {
+      return (<div>
+        <h2>API Response:</h2>
+        <p>{JSON.stringify(data)}</p>
+      </div>
+      )
+    }
   }
 
   return null
