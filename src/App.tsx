@@ -134,6 +134,11 @@ function GetAPI() {
       .catch((error) => console.error('Error fetching data:', error))
   }, [apiUrl])
   
-  return null
+  return (
+    <div>
+      <h2>API Response:</h2>
+      {data ? <p>{data.message}</p> : <p>Loading...</p>}
+    </div>
+  )
 }
 export default App
