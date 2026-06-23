@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -120,16 +120,26 @@ function App() {
 }
 
 function GetAPI() {
-  const apiUrl = import.meta.env.VITE_API_URL
-  console.log('API URL:', apiUrl)
+  const [data, setData] = useState(null)
+  const apiUrl = import.meta.env.VITE_API_URL + '/ping'
 
-  // You can use the apiUrl to make API requests here
-  // For example, you could use fetch or axios to get data from the API
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error('Error fetching data:', error))
+  }, [apiUrl])
 
-  return (
-    <div>
-      <h1>API URL: {apiUrl}</h1>
-    </div>
-  )
+  if (data) {
+    const message = data.message || 'No message received'
+    return (
+      <div>
+        <h2>API Data:</h2>
+        <pre>{JSON.stringify(message , null, 2)}</pre>
+      </div>
+    )
+  }
+
+  return null
 }
 export default App
