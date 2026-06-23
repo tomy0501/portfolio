@@ -31,7 +31,7 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-
+      <GetAPI />
       <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
@@ -119,4 +119,17 @@ function App() {
   )
 }
 
+function GetAPI() {
+  const apiUrl = import.meta.env.VITE_API_URL
+  console.log('API URL:', apiUrl)
+
+  // You can use the apiUrl to make API requests here
+  // For example, you could use fetch or axios to get data from the API
+
+  return (
+    <div>
+      <h1>API URL: {apiUrl}</h1>
+    </div>
+  )
+}
 export default App
