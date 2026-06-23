@@ -119,8 +119,12 @@ function App() {
   )
 }
 
+interface ApiResponse {
+    message: string;
+  }
+
 function GetAPI() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<ApiResponse | null>(null)
   const apiUrl = import.meta.env.VITE_API_URL + '/ping'
 
   useEffect(() => {
@@ -129,23 +133,7 @@ function GetAPI() {
       .then((data) => setData(data))
       .catch((error) => console.error('Error fetching data:', error))
   }, [apiUrl])
-
-  if (data) {
-    if ( typeof data === 'object' && data !== null && 'message' in data) {
-      return (<div>
-        <h2>API Response:</h2>
-        <p>{data.message}</p>
-      </div>
-      )
-    } else {
-      return (<div>
-        <h2>API Response:</h2>
-        <p>{JSON.stringify(data)}</p>
-      </div>
-      )
-    }
-  }
-
+  
   return null
 }
 export default App
