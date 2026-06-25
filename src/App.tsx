@@ -17,9 +17,14 @@ interface ApiResponse {
     message: string;
   }
 
+interface user {
+  name: string;
+  email: string;
+}
+
 function GetAPI() {
-  const [data, setData] = useState<ApiResponse | null>(null)
-  const apiUrl = import.meta.env.VITE_API_URL + 'ping'
+  const [data, setData] = useState<user | null>(null)
+  const apiUrl = import.meta.env.VITE_API_URL + '/'
 
   useEffect(() => {
     fetch(apiUrl)
@@ -31,7 +36,14 @@ function GetAPI() {
   return (
     <div>
       <h2>API Response:</h2>
-      {data ? <p>{data.message}</p> : <p>Loading...</p>}
+      {data ? (
+        <div>
+          <p>Name: {data.name}</p>
+          <p>Email: {data.email}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   )
 }
