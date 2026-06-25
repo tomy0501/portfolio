@@ -21,7 +21,7 @@ interface user {
 
 function GetAPI() {
   const [data, setData] = useState<user | null>(null)
-  const apiUrl = import.meta.env.VITE_API_URL + '/'
+  const apiUrl = import.meta.env.VITE_API_URL
 
   useEffect(() => {
     fetch(apiUrl)
