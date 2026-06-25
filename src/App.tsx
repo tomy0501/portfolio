@@ -13,9 +13,6 @@ function App() {
   )
 }
 
-interface ApiResponse {
-    message: string;
-  }
 
 interface user {
   name: string;
