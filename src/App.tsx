@@ -15,7 +15,7 @@ function App() {
 
 
 interface user {
-  name: string;
+  username: string;
   email: string;
 }
 
@@ -35,7 +35,7 @@ function GetAPI() {
       <h2>API Response:</h2>
       {data ? (
         <div>
-          <p>Name: {data.name}</p>
+          <p>Name: {data.username}</p>
           <p>Email: {data.email}</p>
         </div>
       ) : (
