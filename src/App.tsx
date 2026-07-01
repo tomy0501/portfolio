@@ -48,7 +48,7 @@ function GetAPI() {
 function TestLogin() {
   const email = import.meta.env.VITE_EMAIL
   const password = import.meta.env.VITE_PASSWORD
-  const apiUrl = import.meta.env.VITE_LOGIN_URL
+  const apiUrl = "./auth/login"
 
   useEffect(() => {
     fetch(apiUrl, {
