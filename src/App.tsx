@@ -72,4 +72,24 @@ function TestLogin() {
   )
 }
 
+function TestCookie() {
+  const apiUrl = import.meta.env.VITE_COOKIE_URL
+
+  useEffect(() => {
+    fetch(apiUrl, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('Cookie test response:', data))
+      .catch((error) => console.error('Error during cookie test:', error))
+  }, [apiUrl])
+
+  return (
+    <div>
+      <h2>Cookie Test</h2>
+      <p>Check the console for cookie test response.</p>
+    </div>
+  )
+}
 export default App
