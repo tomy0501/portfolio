@@ -21,7 +21,7 @@ interface user {
 
 function GetAPI() {
   const [data, setData] = useState<user | null>(null)
-  const apiUrl = "./api/"
+  const apiUrl = "./api/user"
 
   useEffect(() => {
     fetch(apiUrl)
