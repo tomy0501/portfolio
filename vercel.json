@@ -3,6 +3,10 @@
     {
       "source": "/auth/:path*",
       "destination": "https://authorizeservice.onrender.com/:path*"
+    },
+    {
+        "source": "/api/:path*",
+        "destination": "https://goapp-84ab.onrender.com//:path*"
     }
   ]
 }

@@ -21,7 +21,7 @@ interface user {
 
 function GetAPI() {
   const [data, setData] = useState<user | null>(null)
-  const apiUrl = import.meta.env.VITE_API_URL
+  const apiUrl = "./api/"
 
   useEffect(() => {
     fetch(apiUrl)
@@ -73,7 +73,7 @@ function TestLogin() {
 }
 
 function TestCookie() {
-  const apiUrl = import.meta.env.VITE_COOKIE_URL
+  const apiUrl = "./api/test"
 
   useEffect(() => {
     fetch(apiUrl, {
