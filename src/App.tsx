@@ -55,6 +55,7 @@ function TestLogin() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'credentials': 'include', // Include credentials if needed
       },
       body: JSON.stringify({ email, password }),
     })
