@@ -7,7 +7,7 @@ function App() {
     <>
       
       <GetAPI />
-
+      <TestLogin />
 
     </>
   )
@@ -44,4 +44,31 @@ function GetAPI() {
     </div>
   )
 }
+
+function TestLogin() {
+  const email = import.meta.env.VITE_EMAIL
+  const password = import.meta.env.VITE_PASSWORD
+  const apiUrl = import.meta.env.VITE_LOGIN_URL
+
+  useEffect(() => {
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('Login response:', data))
+      .catch((error) => console.error('Error during login:', error))
+  }, [email, password, apiUrl])
+
+  return (
+    <div>
+      <h2>Login Test</h2>
+      <p>Check the console for login response.</p>
+    </div>
+  )
+}
+
 export default App
