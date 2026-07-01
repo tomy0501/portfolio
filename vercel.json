@@ -6,7 +6,7 @@
     },
     {
         "source": "/api/:path*",
-        "destination": "https://goapp-84ab.onrender.com//:path*"
+        "destination": "https://goapp-84ab.onrender.com/:path*"
     }
   ]
 }
