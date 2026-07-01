@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/auth/:path*",
-      "destination": "https://authorizeservice.onrender.com*"
+      "destination": "https://authorizeservice.onrender.com/:path*"
     }
   ]
 }
