@@ -66,9 +66,9 @@ function TestLogin() {
   }, [email, password, apiUrl])
 
   return (
-    <div>
-      <h2>Login Test</h2>
-      <p>Check the console for login response.</p>
+    <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-xl font-bold mb-4">Login Test</h2>
+      <p className="text-gray-600">Check the console for login response.</p>
     </div>
   )
 }
