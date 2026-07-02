@@ -8,7 +8,7 @@ function App() {
       
       <GetAPI />
       <TestLogin />
-      <TestCookie />
+      <TestRefresh />
     </>
   )
 }
@@ -127,5 +127,21 @@ async function tokenRefresh() : Promise<boolean> {
     console.error('Error during token refresh:', error)
     return false
   }
+}
+
+function TestRefresh() {
+  tokenRefresh().then((success) => {
+    if (success) {
+      console.log('Token refresh test successful')
+    } else {
+      console.error('Token refresh test failed')
+    }
+  })
+  return (
+    <div>
+      <h2>Token Refresh Test</h2>
+      <p>Check the console for token refresh test response.</p>
+    </div>
+  )
 }
 export default App
