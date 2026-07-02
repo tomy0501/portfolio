@@ -73,7 +73,7 @@ function TestLogin() {
 }
 
 function TestCookie() {
-  const apiUrl = "./api/test"
+  const apiUrl = "./api/testJWT"
 
   useEffect(() => {
     fetch(apiUrl, {
