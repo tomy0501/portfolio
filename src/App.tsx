@@ -80,9 +80,27 @@ function TestCookie() {
       method: 'GET',
       credentials: 'include',
     })
-      .then((response) => response.json())
-      .then((data) => console.log('Cookie test response:', data))
-      .catch((error) => console.error('Error during cookie test:', error))
+      .then((response) => {
+        if (response.status === 401) {
+          tokenRefresh().then((success) => {
+            if (success) {
+              fetch(apiUrl, {
+                method: 'GET',
+                credentials: 'include',
+              })
+                .then((response) => response.json())
+                .then((data) => console.log('Cookie test response after refresh:', data))
+                .catch((error) => console.error('Error during cookie test after refresh:', error))
+            }else {
+              console.error('Token refresh failed, cannot test cookie')
+            }
+          })
+        }else if (response.ok) {
+          return response.json().then((data) => console.log('Cookie test response:', data))
+        } else {
+          throw new Error('Error during cookie test')
+        }
+      })
   }, [apiUrl])
 
   return (
@@ -91,5 +109,23 @@ function TestCookie() {
       <p>Check the console for cookie test response.</p>
     </div>
   )
+}
+
+async function tokenRefresh() : Promise<boolean> {
+  const apiUrl = "./auth/refresh"
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      credentials: 'include',
+    })
+    if (!response.ok) {
+      throw new Error('Token refresh failed')
+    }
+    console.log('Token refreshed successfully')
+    return true
+  } catch (error) {
+    console.error('Error during token refresh:', error)
+    return false
+  }
 }
 export default App
