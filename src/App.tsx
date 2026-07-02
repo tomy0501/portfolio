@@ -7,7 +7,7 @@ function App() {
     <>
       
       {/* <GetAPI /> */}
-      {/* <TestLogin /> */}
+      <TestLogin />
       {/* <TestCookie /> */}
       <TestRefresh />
     </>
@@ -46,32 +46,32 @@ function App() {
 //   )
 // }
 
-// function TestLogin() {
-//   const email = import.meta.env.VITE_EMAIL
-//   const password = import.meta.env.VITE_PASSWORD
-//   const apiUrl = "./auth/login"
+function TestLogin() {
+  const email = import.meta.env.VITE_EMAIL
+  const password = import.meta.env.VITE_PASSWORD
+  const apiUrl = "./auth/login"
 
-//   useEffect(() => {
-//     fetch(apiUrl, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       credentials: 'include',
-//       body: JSON.stringify({ email, password }),
-//     })
-//       .then((response) => response.json())
-//       .then((data) => console.log('Login response:', data))
-//       .catch((error) => console.error('Error during login:', error))
-//   }, [email, password, apiUrl])
+  useEffect(() => {
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('Login response:', data))
+      .catch((error) => console.error('Error during login:', error))
+  }, [email, password, apiUrl])
 
-//   return (
-//     <div>
-//       <h2>Login Test</h2>
-//       <p>Check the console for login response.</p>
-//     </div>
-//   )
-// }
+  return (
+    <div>
+      <h2>Login Test</h2>
+      <p>Check the console for login response.</p>
+    </div>
+  )
+}
 
 // function TestCookie() {
 //   const apiUrl = "./api/testJWT"
