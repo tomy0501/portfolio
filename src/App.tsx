@@ -72,44 +72,44 @@ function TestLogin() {
   )
 }
 
-function TestCookie() {
-  const apiUrl = "./api/testJWT"
+// function TestCookie() {
+//   const apiUrl = "./api/testJWT"
 
-  useEffect(() => {
-    fetch(apiUrl, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => {
-        if (response.status === 401) {
-          tokenRefresh().then((success) => {
-            if (success) {
-              fetch(apiUrl, {
-                method: 'GET',
-                credentials: 'include',
-              })
-                .then((response) => response.json())
-                .then((data) => console.log('Cookie test response after refresh:', data))
-                .catch((error) => console.error('Error during cookie test after refresh:', error))
-            }else {
-              console.error('Token refresh failed, cannot test cookie')
-            }
-          })
-        }else if (response.ok) {
-          return response.json().then((data) => console.log('Cookie test response:', data))
-        } else {
-          throw new Error('Error during cookie test')
-        }
-      })
-  }, [apiUrl])
+//   useEffect(() => {
+//     fetch(apiUrl, {
+//       method: 'GET',
+//       credentials: 'include',
+//     })
+//       .then((response) => {
+//         if (response.status === 401) {
+//           tokenRefresh().then((success) => {
+//             if (success) {
+//               fetch(apiUrl, {
+//                 method: 'GET',
+//                 credentials: 'include',
+//               })
+//                 .then((response) => response.json())
+//                 .then((data) => console.log('Cookie test response after refresh:', data))
+//                 .catch((error) => console.error('Error during cookie test after refresh:', error))
+//             }else {
+//               console.error('Token refresh failed, cannot test cookie')
+//             }
+//           })
+//         }else if (response.ok) {
+//           return response.json().then((data) => console.log('Cookie test response:', data))
+//         } else {
+//           throw new Error('Error during cookie test')
+//         }
+//       })
+//   }, [apiUrl])
 
-  return (
-    <div>
-      <h2>Cookie Test</h2>
-      <p>Check the console for cookie test response.</p>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <h2>Cookie Test</h2>
+//       <p>Check the console for cookie test response.</p>
+//     </div>
+//   )
+// }
 
 async function tokenRefresh() : Promise<boolean> {
   const apiUrl = "./auth/refresh"
