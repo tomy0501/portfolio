@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { LoginForm } from '../components/LoginForm';
-import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
 
     const handleLoginSubmit = async (email: string, password: string) => {
         setIsLoading(true);
@@ -22,7 +20,6 @@ export const LoginPage = () => {
             if (!response.ok) {
                 throw new Error('Login failed');
             }
-            navigate('/home');
         } catch (error) {
             setErrorMessage('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
         } finally {
