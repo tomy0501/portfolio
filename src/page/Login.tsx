@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { LoginForm } from '../components/LoginForm';
 import { useAuth } from '../context/AuthContext'
 import type { LoginMessage } from '../type/auth';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 export const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(false);
