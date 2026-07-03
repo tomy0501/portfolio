@@ -4,17 +4,22 @@ import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 export const Home = () => {
-    const userAuth = useAuth()
-    const userName = userAuth.userName
-    if (userName === ""){
-        return (
-            <Navigate to="/" replace/>
-        )
+    try{
+        const userAuth = useAuth()
+        const userName = userAuth.userName
+        if (userName === ""){
+            return (
+                <Navigate to="/" replace/>
+            )
+        }
+        return  ( 
+                    <div className='w-full'>
+                        <Header userName={userName} />
+                        <Dashboard />
+                    </div>
+                )
+    }catch(error:any){
+        console.error("cannot create auth",error)
     }
-    return (
-        <div className='w-full'>
-            <Header userName={userName} />
-            <Dashboard />
-        </div>
-    )
+   
 }
