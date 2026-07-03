@@ -1,8 +1,8 @@
 import type { JwtPayload } from "jwt-decode";
 
 export interface MyCustomeClaims extends JwtPayload {
-    name:string,
-    roles: string
+    username:string,
+    role: string
 }
 
 export interface LoginMessage {

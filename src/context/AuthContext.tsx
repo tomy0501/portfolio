@@ -20,8 +20,11 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
         try{
             const decoded = jwtDecode<MyCustomeClaims>(accessToken)
             console.log(decoded)
-            setUserName(decoded.name)
-            setRole(decoded.roles)
+            if(decoded.username === "" || decoded.role === ""){
+                throw new Error("ユーザー名とメールアドレスが取得できませんでした。")
+            }
+            setUserName(decoded.username)
+            setRole(decoded.role)
         }catch(error)
         {
             console.error("JWTのデコードに失敗しました",error)
