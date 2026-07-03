@@ -3,11 +3,13 @@ import { LoginForm } from '../components/LoginForm';
 import { useAuth } from '../context/AuthContext'
 import type { LoginMessage } from '../type/auth';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const { login } = useAuth()
+    const navigation = useNavigate();
 
     const handleLoginSubmit = async (email: string, password: string) => {
         setIsLoading(true);
@@ -21,7 +23,7 @@ export const LoginPage = () => {
             const token = (await response).data.accessToken;
 
             login(token)
-
+            navigation("/home")
             
         } catch (error: any) {
             if (error.response && error.response.data){
