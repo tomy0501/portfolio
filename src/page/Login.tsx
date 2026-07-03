@@ -3,14 +3,16 @@ import { LoginForm } from '../components/LoginForm';
 import { useAuth } from '../context/AuthContext'
 import type { LoginMessage } from '../type/auth';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Navigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const { login } = useAuth()
+    const { login,userName,role } = useAuth()
     const navigation = useNavigate();
-
+    if (userName !== '' && role !== ''){
+        return <Navigate to="/home"></Navigate>
+    }
     const handleLoginSubmit = async (email: string, password: string) => {
         setIsLoading(true);
         setErrorMessage('');
