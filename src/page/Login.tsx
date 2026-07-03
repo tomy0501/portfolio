@@ -1,27 +1,35 @@
 import { useState } from 'react';
 import { LoginForm } from '../components/LoginForm';
+import { useAuth } from '../context/AuthContext'
+import type { LoginMessage } from '../type/auth';
+import axios, { Axios } from 'axios';
 
 export const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const { login } = useAuth()
 
     const handleLoginSubmit = async (email: string, password: string) => {
         setIsLoading(true);
         setErrorMessage('');
         try {
-            const response = await fetch('./auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-                credentials: 'include',
-            });
-            if (!response.ok) {
-                throw new Error('Login failed');
+            const response = axios.post<LoginMessage>('/auth/login',{
+                email:email,
+                password:password
+            })
+
+            const token = (await response).data.accessToken;
+
+            login(token)
+
+            
+        } catch (error: any) {
+            if (error.response && error.response.data){
+                setErrorMessage(error.response.data)
+            }else{
+                setErrorMessage('通信に失敗しました。');
             }
-        } catch (error) {
-            setErrorMessage('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
+            
         } finally {
             setIsLoading(false);
         }
