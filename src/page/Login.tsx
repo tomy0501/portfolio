@@ -28,6 +28,8 @@ export const LoginPage = () => {
     };
 
     return (
+        <div className="flex items-center justify-center m-[20%] min-h-screen bg-gray-100">
         <LoginForm isLoading={isLoading} errorMessage={errorMessage} onSubmit={handleLoginSubmit} />
+        </div>
     )
 };
