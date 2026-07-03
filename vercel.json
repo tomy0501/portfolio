@@ -9,7 +9,7 @@
         "destination": "https://goapp-84ab.onrender.com/:path*"
     },
     {
-      "source": "/(?!auth/|api/)(.*)",
+      "source": "/((?!api/|auth/).*)",
       "destination": "/index.html"
     }
   ]
