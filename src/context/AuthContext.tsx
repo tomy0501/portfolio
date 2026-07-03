@@ -19,6 +19,7 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
     const login = (accessToken: string) =>{
         try{
             const decoded = jwtDecode<MyCustomeClaims>(accessToken)
+            console.log(decoded)
             setUserName(decoded.name)
             setRole(decoded.roles)
         }catch(error)
