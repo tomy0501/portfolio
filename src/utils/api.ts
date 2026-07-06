@@ -7,7 +7,7 @@ export const api = axios.create({
 
 let logoutHandler: () => void = () => {};
 
-export const injectLogoutHandler = (handler: () => void){
+export const injectLogoutHandler = (handler: () => void) =>{
     logoutHandler = handler;
 }
 
