@@ -9,7 +9,7 @@ export const Home = () => {
         const userName = userAuth.userName
         if (userName === ""){
             return (
-                <Navigate to="/" replace/>
+                <Navigate to="/login" replace/>
             )
         }
         return  ( 
