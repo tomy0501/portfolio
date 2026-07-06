@@ -5,6 +5,12 @@ export const api = axios.create({
     withCredentials: true,
 });
 
+let logoutHandler: () => void = () => {};
+
+export const injectLogoutHandler = (handler: () => void){
+    logoutHandler = handler;
+}
+
 api.interceptors.response.use(
     (response) => response,
     async (error) =>{
@@ -16,7 +22,7 @@ api.interceptors.response.use(
                 await axios.post('/auth/refresh',{},{withCredentials:true});
                 return api(originalRequest);
             }catch(refreshError){
-                window.location.href = '/';
+                logoutHandler();
                 return Promise.reject(refreshError);
             }
         }
