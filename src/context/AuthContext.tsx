@@ -36,10 +36,21 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
             console.error("JWTのデコードに失敗しました",error)
         }
     }
-    const logout = () => {
+    const logout = async () => {
         setUserName('')
         setRole('')
-        navigate("/login")
+        try{
+            const response = await api.post("/auth/logout");
+            if (response.status !== 200){
+                 throw new Error("can't logout",response.data.message)
+            }
+           
+        }catch(error){
+            console.error("error happen in logout",error)
+        }finally{
+            navigate("/login")
+        }
+        
     }
 
     useEffect(() =>{
