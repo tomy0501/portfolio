@@ -8,11 +8,12 @@ import { useNavigate,useLocation } from 'react-router-dom'
 interface AuthContextType {
     userName: string;
     role: string;
+    loading: boolean;
     login: (accessToken: string) => void;
     logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType|null>(null);
+export const AuthContext = createContext<AuthContextType|null>(null);
 
 
 export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) => {
@@ -64,7 +65,7 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
         return  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>読み込み中...</div>;
     }
     return (
-        <AuthContext.Provider value={{userName,role,login,logout}}>
+        <AuthContext.Provider value={{userName,role,login,logout,loading}}>
             {children}
         </AuthContext.Provider>
     )
