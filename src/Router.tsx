@@ -6,14 +6,16 @@ import { RootLayout } from "./page/RouterLayout";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element:  <RootLayout />
-    },
-    {
-        path: "/home",
-        element: <Home />
-    },
-    {
-        path: "/login",
-        element: <LoginPage/>
+        element:  <RootLayout />,
+        children:[
+            {
+                path: "/home",
+                element: <Home />
+            },
+            {
+                path: "/login",
+                element: <LoginPage/>
+            }
+        ]
     }
-]);
+   ]);
