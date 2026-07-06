@@ -3,7 +3,7 @@ import React, { createContext,useContext,useState,useEffect} from 'react'
 import { jwtDecode } from 'jwt-decode'
 import type { MyCustomeClaims } from '../type/auth'
 import { api,injectLogoutHandler } from '../utils/api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 
 interface AuthContextType {
     userName: string;
@@ -19,6 +19,7 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
     const [userName,setUserName] = useState<string>('')
     const [role,setRole] = useState<string>('')
     const [loading,setLoading] = useState<boolean>(true)
+    const location = useLocation();
     const navigate = useNavigate();
     const login = (accessToken: string) =>{
         try{
@@ -42,6 +43,10 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
 
     useEffect(() =>{
         const restoreSession = async () => {
+            if (location.pathname === "/login"){
+                setLoading(false);
+                return;
+            }
             injectLogoutHandler(logout);
             try{
                 const response = await api.post<{accessToken:string}>('/auth/refresh');
