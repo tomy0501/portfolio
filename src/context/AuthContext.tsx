@@ -1,7 +1,8 @@
-import React, { createContext,useContext,useState } from 'react'
+import React, { createContext,useContext,useState,useEffect} from 'react'
 
 import { jwtDecode } from 'jwt-decode'
 import type { MyCustomeClaims } from '../type/auth'
+import { api } from '../utils/api'
 
 interface AuthContextType {
     userName: string;
@@ -16,6 +17,7 @@ const AuthContext = createContext<AuthContextType|null>(null);
 export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) => {
     const [userName,setUserName] = useState<string>('')
     const [role,setRole] = useState<string>('')
+    const [loading,setLoading] = useState<boolean>(true)
     const login = (accessToken: string) =>{
         try{
             const decoded = jwtDecode<MyCustomeClaims>(accessToken)
@@ -33,6 +35,24 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
     const logout = () => {
         setUserName('')
         setRole('')
+    }
+
+    useEffect(() =>{
+        const restoreSession = async () => {
+            try{
+                const response = await api.post<{accessToken:string}>('/api/refresh');
+                login(response.data.accessToken)
+            }catch(error){
+
+            }finally{
+                setLoading(true);
+            }
+        }
+        restoreSession();
+    },[])
+
+    if(loading){
+        return  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>読み込み中...</div>;
     }
     return (
         <AuthContext.Provider value={{userName,role,login,logout}}>
