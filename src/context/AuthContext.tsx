@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
     useEffect(() =>{
         const restoreSession = async () => {
             try{
-                const response = await api.post<{accessToken:string}>('/api/refresh');
+                const response = await api.post<{accessToken:string}>('/auth/refresh');
                 login(response.data.accessToken)
             }catch(error){
 
