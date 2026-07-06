@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({children}) =
             }catch(error){
                 logout()
             }finally{
-                setLoading(true);
+                setLoading(false);
             }
         }
         restoreSession();
