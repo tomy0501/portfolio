@@ -20,6 +20,9 @@ export const Home = () => {
                 )
     }catch(error:any){
         console.error("cannot create auth",error)
+        return (
+            <Navigate to="/login" replace/>
+        )
     }
    
 }
