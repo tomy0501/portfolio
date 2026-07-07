@@ -20,7 +20,7 @@ export const Header = ({ userName ,logout}: HeaderProps) => {
                     </div>
                     <button className="text-lg text-gray-500 bg-cyan-500 
                     text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
-                    hover:bg-white hover:text-black" type="submit">ログアウトする</button>
+                    hover:bg-white hover:text-black cursor-pointer" type="submit">ログアウトする</button>
                 </div>
             </form>
         </header>
