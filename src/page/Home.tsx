@@ -14,7 +14,7 @@ export const Home = () => {
         }
         return  ( 
                     <div className='w-full'>
-                        <Header userName={userName} />
+                        <Header userName={userName} logout={userAuth.logout} />
                         <Dashboard />
                     </div>
                 )
