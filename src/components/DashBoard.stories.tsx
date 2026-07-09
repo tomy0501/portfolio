@@ -1,6 +1,6 @@
 import type { Meta,StoryObj } from '@storybook/react'
 import { Dashboard } from './DashBoard'
-import type { Hotel } from 'src/type/hotel';
+import type { Hotel } from '@/type/hotel';
 
 const meta: Meta<typeof Dashboard> = {
     title: "utility/Dashboard",

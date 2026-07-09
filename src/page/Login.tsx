@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { LoginForm } from '../components/LoginForm';
-import { useAuth } from '../context/AuthContext'
-import type { LoginMessage } from '../type/auth';
+import { LoginForm } from '@/components/LoginForm';
+import { useAuth } from '@/context/AuthContext'
+import type { LoginMessage } from '@/type/auth';
 import axios from 'axios';
 import { useNavigate,Navigate } from 'react-router-dom';
 

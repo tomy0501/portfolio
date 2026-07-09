@@ -1,9 +1,9 @@
-import { Header } from '../components/Header';
-import { Dashboard } from '../components/DashBoard';
-import { useAuth } from '../context/AuthContext';
+import { Header } from '@/components/Header';
+import { Dashboard } from '@/components/DashBoard';
+import { useAuth } from '@/context/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { api } from '../utils/api';
-import type { Hotel } from '../type/hotel'
+import { api } from '@/utils/api';
+import type { Hotel } from '@/type/hotel'
 import { useEffect,useState } from 'react';
 
 export const Home = () => {

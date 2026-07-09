@@ -1,8 +1,8 @@
 import React, { createContext,useContext,useState,useEffect} from 'react'
 
 import { jwtDecode } from 'jwt-decode'
-import type { MyCustomeClaims } from '../type/auth'
-import { api,injectLogoutHandler } from '../utils/api'
+import type { MyCustomeClaims } from '@/type/auth'
+import { api,injectLogoutHandler } from '@/utils/api'
 import { useNavigate,useLocation } from 'react-router-dom'
 
 interface AuthContextType {

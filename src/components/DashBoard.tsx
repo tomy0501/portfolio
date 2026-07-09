@@ -1,4 +1,4 @@
-import type { Hotel } from "../type/hotel"
+import type { Hotel } from "@/type/hotel"
 import { Table,
         TableHead,
         TableBody,
