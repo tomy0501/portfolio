@@ -5,6 +5,10 @@ import { Navigate } from 'react-router-dom';
 import { api } from '@/utils/api';
 import type { Hotel } from '@/type/hotel'
 import { useEffect,useState } from 'react';
+type apiMessage = {
+    message: string,
+    value: Hotel[]
+}
 
 export const Home = () => {
     try{
@@ -19,8 +23,8 @@ export const Home = () => {
                 setError('')
 
                 try{
-                    const response = await api.get<Hotel[]>('/api/facility')
-                    setHotels(response.data)
+                    const response = await api.get<apiMessage>('/api/facility')
+                    setHotels(response.data.value)
                 }catch(error:any){
                    setError(error)
                 }finally{
