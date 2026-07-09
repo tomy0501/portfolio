@@ -32,7 +32,7 @@ export const Home = () => {
                 }
             }
             fetchHotel()
-        })
+        },[])
         if (userName === ""){
             return (
                 <Navigate to="/login" replace/>
