@@ -14,10 +14,12 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "axios": "^1.18.1",
+    "clsx": "^2.1.1",
     "jwt-decode": "^4.0.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.18.1",
+    "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
@@ -28,7 +30,7 @@
     "@storybook/addon-mcp": "^0.6.0",
     "@storybook/addon-vitest": "^10.4.6",
     "@storybook/react-vite": "^10.4.6",
-    "@types/node": "^24.12.3",
+    "@types/node": "^24.13.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
