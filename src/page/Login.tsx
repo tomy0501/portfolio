@@ -30,7 +30,13 @@ export const LoginPage = () => {
         } catch (error: any) {
             console.log(error.response)
             if (error.response && error.response.data){
-                setErrorMessage(error.response.data)
+                if(error.response.status === 400){
+                    setErrorMessage("メールアドレスかパスワードの形式が不正です。")
+                }else if(error.response.status === 403){
+                    setErrorMessage("パスワードかメールアドレスが違います。")
+                }else{
+                    setErrorMessage("不明なエラーが発生しました。")
+                }
             }else{
                 setErrorMessage('通信に失敗しました。');
             }
