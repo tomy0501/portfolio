@@ -25,7 +25,7 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
             errorMessage !== "" ? <p>{errorMessage}</p>:
             <Table>
                 <TableRow>
-                    <TableHead className="py=5 font-medium">旅館名</TableHead>
+                    <TableHead className="py-5 font-medium">旅館名</TableHead>
                     <TableHead className="py-5 font-medium">住所</TableHead>
                     <TableHead className="py-5 font-medium">電話番号</TableHead>
                 </TableRow>
