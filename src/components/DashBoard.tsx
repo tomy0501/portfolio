@@ -5,6 +5,7 @@ import { Table,
         TableRow,
         TableCell
  } from "@/components/ui/table"
+import { useNavigate } from "react-router-dom";
 
 type DashboardPropertys = {
     isLoading: boolean;
@@ -13,8 +14,12 @@ type DashboardPropertys = {
 };
 
 export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys) => {
+    const navigate = useNavigate();
+    const handleHotelClick = (hotelID: string) =>{
+        navigate(`/hotels/${hotelID}`)
+    }
     return (
-        <div className="flex items-center justify-center m-auto min-h-screen bg-gray-100">
+        <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
             {isLoading  ? 
             <h1 className="text-3xl font-bold text-orange">ロード中です…お待ちください</h1> :
             errorMessage !== "" ? <p>{errorMessage}</p>:
@@ -27,7 +32,9 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
                 <TableBody>
                     {hotels.map(value =>{
                         return (
-                        <TableRow>
+                        <TableRow onClick={() =>{
+                            handleHotelClick(value.hotelID)
+                        }}>
                             <TableCell>
                                 {value.hotelName}
                             </TableCell>
