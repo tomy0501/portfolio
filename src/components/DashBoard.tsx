@@ -34,7 +34,7 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
                         return (
                         <TableRow onClick={() =>{
                             handleHotelClick(value.hotelID)
-                        }} className="hover:cursor-poionter">
+                        }} className="hover:cursor-pointer">
                             <TableCell className="py-6" font-medium>
                                 {value.hotelName}
                             </TableCell>
