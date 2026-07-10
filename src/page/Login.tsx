@@ -28,6 +28,7 @@ export const LoginPage = () => {
             navigation("/home")
             
         } catch (error: any) {
+            console.log(error)
             if (error.response && error.response.data){
                 setErrorMessage(error.response.data)
             }else{
