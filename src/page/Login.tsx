@@ -28,7 +28,6 @@ export const LoginPage = () => {
             navigation("/home")
             
         } catch (error: any) {
-            console.log(error.response)
             if (error.response && error.response.data){
                 if(error.response.status === 400){
                     setErrorMessage("メールアドレスかパスワードの形式が不正です。")
