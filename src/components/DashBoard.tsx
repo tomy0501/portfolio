@@ -25,23 +25,23 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
             errorMessage !== "" ? <p>{errorMessage}</p>:
             <Table>
                 <TableRow>
-                    <TableHead>旅館名</TableHead>
-                    <TableHead>住所</TableHead>
-                    <TableHead>電話番号</TableHead>
+                    <TableHead className="py=5 font-medium">旅館名</TableHead>
+                    <TableHead className="py-5 font-medium">住所</TableHead>
+                    <TableHead className="py-5 font-medium">電話番号</TableHead>
                 </TableRow>
                 <TableBody>
                     {hotels.map(value =>{
                         return (
                         <TableRow onClick={() =>{
                             handleHotelClick(value.hotelID)
-                        }}>
-                            <TableCell>
+                        }} className="hover:cursor-poionter">
+                            <TableCell className="py-6" font-medium>
                                 {value.hotelName}
                             </TableCell>
-                            <TableCell>
+                            <TableCell className="py-6 font-medium">
                                 {value.address}
                             </TableCell>
-                            <TableCell>
+                            <TableCell className="py-6 font-medium">
                                 {value.phone}
                             </TableCell>
                         </TableRow>        
