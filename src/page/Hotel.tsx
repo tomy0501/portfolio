@@ -1,0 +1,73 @@
+import { useAuth } from "@/context/AuthContext"
+import { useEffect, useState } from "react"
+import { api } from "@/utils/api"
+import { useNavigate } from "react-router-dom"
+import { Header } from "@/components/Header"
+import { ReservationLists } from "@/components/Reservation"
+
+export type Guest = {
+    GuestID: String,
+    GuestName: String,
+    GuestAge: Number,
+    GuestSex: String,
+    GuestFrom: String,
+    Checkin: String,
+    Checkout: String,
+    GuestRoom: Room
+}
+
+export type Room = {
+    RoomID: String,
+    RoomName: String,
+    RoomType: String
+}
+export type Reservation = {
+    reservationID: String,
+    representGuest: Guest,
+    Guests: Guest[]
+}
+
+type ReservationMessage = {
+    message: string,
+    value: Reservation[]
+}
+export const Hotel= (facilityID: string) =>{
+    try{
+        const auth = useAuth()
+        const userName = auth.userName
+        const [reservations,setReservations] = useState<Reservation[]>([])
+        const [isLoading,setIsLoading] = useState<boolean>(true)
+        const [errorMessage,setErrorMessage] = useState<string>("")
+        const navigate = useNavigate()
+        if (userName == ""){
+            navigate("/home")
+        }
+        useEffect(() =>{
+            const getAllReservation = async () => {
+                try{
+                const data = await api.get<ReservationMessage>(`/api/allReservation/${facilityID}`)
+                if(data.status !== 200){
+                    throw new Error("cannnot get Reservation")
+                }
+                setReservations(data.data.value)
+                setIsLoading(false)
+            }catch(error){
+                setErrorMessage("予約情報が取得できませんでした")
+                console.log(error)
+            }
+            }
+            getAllReservation()
+        },[])
+        return (
+            <>
+            <Header userName={userName} logout={auth.logout}
+            ></Header>
+            <ReservationLists reservations={reservations} isLoading={isLoading} errorMessage={errorMessage}/>
+            </>
+            
+           
+        )
+    }catch(error){
+       
+    }
+}
