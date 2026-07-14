@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/AuthContext"
 import { useEffect, useState } from "react"
 import { api } from "@/utils/api"
-import { useNavigate } from "react-router-dom"
+import { useNavigate ,useParams} from "react-router-dom"
 import { Header } from "@/components/Header"
 import { ReservationLists } from "@/components/Reservation"
 
@@ -31,7 +31,7 @@ type ReservationMessage = {
     message: string,
     value: Reservation[]
 }
-export const Hotel= (facilityID: string) =>{
+export const Hotel= () =>{
     try{
         const auth = useAuth()
         const userName = auth.userName
@@ -42,10 +42,11 @@ export const Hotel= (facilityID: string) =>{
         if (userName == ""){
             navigate("/home")
         }
+        const {hotelID} = useParams()
         useEffect(() =>{
             const getAllReservation = async () => {
                 try{
-                const data = await api.get<ReservationMessage>(`/api/allReservation/${facilityID}`)
+                const data = await api.get<ReservationMessage>(`/api/allReservation/${hotelID}`)
                 if(data.status !== 200){
                     throw new Error("cannnot get Reservation")
                 }
