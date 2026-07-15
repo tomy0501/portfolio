@@ -83,7 +83,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
 
 export const ReservationLists = ({isLoading,errorMessage,reservations}: ReservationProperty) => {
     return(
-        <div>
+        <>
             {isLoading ? <p>しばらくお待ちください</p> : errorMessage != "" ? <h1>{errorMessage}</h1> :
                 <Table>
                     <TableHeader>
@@ -93,8 +93,7 @@ export const ReservationLists = ({isLoading,errorMessage,reservations}: Reservat
                         <TableHead className="py-6" font-large>
                             宿泊者年齢
                         </TableHead>
-                        <TableHead className="py-6" font-large>
-                            宿泊者性別
+                        <TableHead className="py-6" font-large>                            宿泊者性別
                         </TableHead>
                         <TableHead className="py-6" font-large>
                             宿泊者出身
@@ -115,7 +114,7 @@ export const ReservationLists = ({isLoading,errorMessage,reservations}: Reservat
                     </TableBody>
                 </Table>
             }
-        </div>
+        </>
         
     )
 }
