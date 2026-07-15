@@ -26,7 +26,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
         setToggleOn(false)
     }
         return (
-                <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
+                <>
                 {toggleOn ? 
                    reservation.Guests.map(value => {
                     return (
@@ -74,7 +74,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                 </TableRow>}
                 
                
-                </div>
+                </>
                 )
 
 }
@@ -83,7 +83,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
 
 export const ReservationLists = ({isLoading,errorMessage,reservations}: ReservationProperty) => {
     return(
-        <>
+        <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
             {isLoading ? <p>しばらくお待ちください</p> : errorMessage != "" ? <h1>{errorMessage}</h1> :
                 <Table>
                     <TableHeader>
@@ -114,7 +114,7 @@ export const ReservationLists = ({isLoading,errorMessage,reservations}: Reservat
                     </TableBody>
                 </Table>
             }
-        </>
+        </div>
         
     )
 }
