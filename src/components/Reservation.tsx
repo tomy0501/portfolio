@@ -35,7 +35,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestName}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestAge.toString()}
+                                {value.GuestAge.Valid ? value.GuestAge.Int16.toString() : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
                                 {value.GuestSex.Valid ? value.GuestSex.String : "不明"}
@@ -57,7 +57,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.GuestName}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestAge.toString()}
+                        {reservation.RepresentGuest.GuestAge.Valid ? reservation.RepresentGuest.GuestAge.Int16.toString() : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.GuestSex.Valid ? reservation.RepresentGuest.GuestSex.String : "不明"}

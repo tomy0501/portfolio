@@ -71,11 +71,11 @@ export const Hotel= () =>{
             getAllReservation()
         },[])
         return (
-            <>
+            <div className='w-full'>
             <Header userName={userName} logout={auth.logout}
             ></Header>
             <ReservationLists reservations={reservations} isLoading={isLoading} errorMessage={errorMessage}/>
-            </>
+            </div>
             
            
         )
