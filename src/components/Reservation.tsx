@@ -26,7 +26,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
         setToggleOn(false)
     }
         return (
-                <>
+                <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
                 {toggleOn ? 
                    reservation.Guests.map(value => {
                     return (
@@ -74,7 +74,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                 </TableRow>}
                 
                
-                </>
+                </div>
                 )
 
 }
