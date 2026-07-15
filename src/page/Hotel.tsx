@@ -32,8 +32,8 @@ export type Room = {
     RoomType: String
 }
 export type Reservation = {
-    reservationID: String,
-    representGuest: Guest,
+    ReservationID: String,
+    RepresentGuest: Guest,
     Guests: Guest[]
 }
 
