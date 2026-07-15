@@ -39,7 +39,7 @@ export type Reservation = {
 
 type ReservationMessage = {
     message: string,
-    value: Reservation[]
+    value: Reservation[] | null
 }
 export const Hotel= () =>{
     try{
@@ -61,7 +61,12 @@ export const Hotel= () =>{
                     throw new Error("cannnot get Reservation")
                 }
                 console.log(data)
-                setReservations(data.data.value)
+                if(data.data.value == null){
+                    setErrorMessage("予約情報は存在しません。")
+                }else{
+                     setReservations(data.data.value)
+                }
+               
                 setIsLoading(false)
             }catch(error){
                 setErrorMessage("予約情報が取得できませんでした")
