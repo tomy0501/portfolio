@@ -72,8 +72,8 @@ const testReservations : Reservation[] = [1,2,3,4].map((num)=>{
         guests.push(guest)
     }
     const reservation : Reservation = {
-        reservationID: `acdda-234662-dcca-2345cf-22235${num}`,
-        representGuest: baseGuestArray[index],
+        ReservationID: `acdda-234662-dcca-2345cf-22235${num}`,
+        RepresentGuest: baseGuestArray[index],
         Guests: guests
     }
     return reservation
