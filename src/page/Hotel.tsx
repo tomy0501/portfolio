@@ -60,6 +60,7 @@ export const Hotel= () =>{
                 if(data.status !== 200){
                     throw new Error("cannnot get Reservation")
                 }
+                console.log(data)
                 setReservations(data.data.value)
                 setIsLoading(false)
             }catch(error){
