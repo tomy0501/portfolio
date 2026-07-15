@@ -54,22 +54,22 @@ export const ReservationInfos = (reservation: Reservation) =>{
                    })
                 : <TableRow className="hover:cursor-pointer" onClick={HandleToggleon}>
                     <TableCell className="py-6" font-medium>
-                        {reservation.representGuest.GuestName}
+                        {reservation.RepresentGuest.GuestName}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.GuestAge.toString()}
+                        {reservation.RepresentGuest.GuestAge.toString()}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.GuestSex.Valid ? reservation.representGuest.GuestSex.String : "不明"}
+                        {reservation.RepresentGuest.GuestSex.Valid ? reservation.RepresentGuest.GuestSex.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.GuestFrom.Valid ? reservation.representGuest.GuestFrom.String : "不明"}
+                        {reservation.RepresentGuest.GuestFrom.Valid ? reservation.RepresentGuest.GuestFrom.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.Checkin.Valid ? reservation.representGuest.Checkin.String : "未定"}
+                        {reservation.RepresentGuest.Checkin.Valid ? reservation.RepresentGuest.Checkin.String : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.Checkout.Valid ? reservation.representGuest.Checkout.String : "未定"}
+                        {reservation.RepresentGuest.Checkout.Valid ? reservation.RepresentGuest.Checkout.String : "未定"}
                     </TableCell>
                 </TableRow>}
                 
@@ -108,7 +108,7 @@ export const ReservationLists = ({isLoading,errorMessage,reservations}: Reservat
                     <TableBody>
                         {reservations.map(value =>{
                             return (
-                                <ReservationInfos  representGuest={value.representGuest} Guests={value.Guests} reservationID={value.reservationID} />
+                                <ReservationInfos  RepresentGuest={value.RepresentGuest} Guests={value.Guests} ReservationID={value.ReservationID} />
                             )
                         })}
                     </TableBody>
