@@ -38,16 +38,16 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestAge.toString()}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestSex}
+                                {value.GuestSex.Valid ? value.GuestSex.String : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestFrom}
+                                {value.GuestFrom.Valid ? value.GuestFrom.String : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkin}
+                                {value.Checkin.Valid ? value.Checkin.String : "未定"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkout}
+                                {value.Checkout.Valid ? value.Checkout.String : "未定"}
                             </TableCell>
                         </TableRow>
                     )
@@ -60,16 +60,16 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.representGuest.GuestAge.toString()}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.GuestSex}
+                        {reservation.representGuest.GuestSex.Valid ? reservation.representGuest.GuestSex.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.GuestFrom}
+                        {reservation.representGuest.GuestFrom.Valid ? reservation.representGuest.GuestFrom.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.Checkin}
+                        {reservation.representGuest.Checkin.Valid ? reservation.representGuest.Checkin.String : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.representGuest.Checkout}
+                        {reservation.representGuest.Checkout.Valid ? reservation.representGuest.Checkout.String : "未定"}
                     </TableCell>
                 </TableRow>}
                 

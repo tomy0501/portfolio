@@ -5,14 +5,24 @@ import { useNavigate ,useParams} from "react-router-dom"
 import { Header } from "@/components/Header"
 import { ReservationLists } from "@/components/Reservation"
 
+export type Int16OrNull = {
+    Int16: Number,
+    Valid: Boolean
+}
+
+export type StringOrNull = {
+    String: String,
+    Valid: Boolean
+}
+
 export type Guest = {
     GuestID: String,
     GuestName: String,
-    GuestAge: Number,
-    GuestSex: String,
-    GuestFrom: String,
-    Checkin: String,
-    Checkout: String,
+    GuestAge: Int16OrNull,
+    GuestSex: StringOrNull,
+    GuestFrom: StringOrNull,
+    Checkin: StringOrNull,
+    Checkout: StringOrNull
     GuestRoom: Room
 }
 
