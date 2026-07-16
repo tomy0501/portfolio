@@ -21,8 +21,8 @@ export type Guest = {
     GuestAge: Int16OrNull,
     GuestSex: StringOrNull,
     GuestFrom: StringOrNull,
-    Checkin: StringOrNull,
-    Checkout: StringOrNull
+    CheckIn: StringOrNull,
+    CheckOut: StringOrNull
     Room: Room
 }
 

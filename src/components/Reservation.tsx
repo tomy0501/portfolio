@@ -44,10 +44,10 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestFrom.Valid ? value.GuestFrom.String : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkin.Valid ? value.Checkin.String : "未定"}
+                                {value.CheckIn.Valid ? value.CheckIn.String : "未定"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkout.Valid ? value.Checkout.String : "未定"}
+                                {value.CheckOut.Valid ? value.CheckOut.String : "未定"}
                             </TableCell>
                             <TableCell>
                                 {value.Room.RoomName}
@@ -69,10 +69,10 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.GuestFrom.Valid ? reservation.RepresentGuest.GuestFrom.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkin.Valid ? reservation.RepresentGuest.Checkin.String : "未定"}
+                        {reservation.RepresentGuest.CheckIn.Valid ? reservation.RepresentGuest.CheckIn.String : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkout.Valid ? reservation.RepresentGuest.Checkout.String : "未定"}
+                        {reservation.RepresentGuest.CheckOut.Valid ? reservation.RepresentGuest.CheckOut.String : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.Room.RoomName}
