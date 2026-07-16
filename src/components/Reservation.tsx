@@ -25,6 +25,13 @@ export const ReservationInfos = (reservation: Reservation) =>{
         event.preventDefault()
         setToggleOn(false)
     }
+    const formatter = new Intl.DateTimeFormat("ja-JP",
+        {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }
+    )
         return (
                 <>
                 {toggleOn ? 
@@ -44,10 +51,10 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestFrom.Valid ? value.GuestFrom.String : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkin.Valid ? new Date(value.Checkin.String).toISOString() : "未定"}
+                                {value.Checkin.Valid ? formatter.format(new Date(value.Checkin.String)): "未定"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkout.Valid ? new Date(value.Checkout.String).toISOString() : "未定"}
+                                {value.Checkout.Valid ? formatter.format(new Date(value.Checkout.String)) : "未定"}
                             </TableCell>
                             <TableCell>
                                 {value.Room.RoomName}
@@ -69,10 +76,10 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.GuestFrom.Valid ? reservation.RepresentGuest.GuestFrom.String : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkin.Valid ? new Date(reservation.RepresentGuest.Checkin.String).toISOString() : "未定"}
+                        {reservation.RepresentGuest.Checkin.Valid ? formatter.format(new Date(reservation.RepresentGuest.Checkin.String)) : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkout.Valid ? new Date(reservation.RepresentGuest.Checkout.String).toISOString() : "未定"}
+                        {reservation.RepresentGuest.Checkout.Valid ? formatter.format(new Date(reservation.RepresentGuest.Checkout.String)) : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.Room.RoomName}
