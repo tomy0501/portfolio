@@ -10,13 +10,14 @@ let logoutHandler: () => void = () => {};
 export const injectLogoutHandler = (handler: () => void) =>{
     logoutHandler = handler;
 }
+const TOKEN_EXPIRED = "TOKEN_EXPIRED"
 
 api.interceptors.response.use(
     (response) => response,
     async (error) =>{
         const originalRequest = error.config;
 
-        if (error.response?.status === 401 && !originalRequest._retry){
+        if (error.response?.status === 401 && error.response?.code === TOKEN_EXPIRED && !originalRequest._retry){
             originalRequest._retry = true;
             try {
                 await axios.post('/auth/refresh',{},{withCredentials:true});
