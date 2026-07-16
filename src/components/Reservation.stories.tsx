@@ -32,8 +32,8 @@ const baseGuestArray : Guest[] = [1,2,3,4,5].map((num) =>{
         GuestAge: { Valid: true,Int16:30 + num},
         GuestFrom: {Valid:true,String:`新潟市西区${num}丁目` },
         GuestName: `テスト${num}さん`,
-        CheckIn: {Valid:true,String:'2026-11-11'},
-        CheckOut: {Valid:true,String:'2026-11-13'},
+        Checkin: {Valid:true,String:'2026-11-11'},
+        Checkout: {Valid:true,String:'2026-11-13'},
         GuestSex: {Valid:true,String:sex},
         Room: Room
     }
@@ -66,8 +66,8 @@ const testReservations : Reservation[] = [1,2,3,4].map((num)=>{
             GuestName: `テストイノウエ${i + num}`,
             Room: Room,
             GuestSex: {Valid:true,String:sex},
-            CheckIn: {Valid:true,String:baseCheckin.toDateString()},
-            CheckOut: {Valid:true,String:baseCheckout.toDateString()}
+            Checkin: {Valid:true,String:baseCheckin.toDateString()},
+            Checkout: {Valid:true,String:baseCheckout.toDateString()}
         }
         guests.push(guest)
     }
