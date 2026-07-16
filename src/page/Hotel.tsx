@@ -6,18 +6,18 @@ import { Header } from "@/components/Header"
 import { ReservationLists } from "@/components/Reservation"
 
 export type Int16OrNull = {
-    Int16: Number,
-    Valid: Boolean
+    Int16: number,
+    Valid: boolean
 }
 
 export type StringOrNull = {
-    String: String,
-    Valid: Boolean
+    String: string,
+    Valid: boolean
 }
 
 export type Guest = {
-    GuestID: String,
-    GuestName: String,
+    GuestID: string,
+    GuestName: string,
     GuestAge: Int16OrNull,
     GuestSex: StringOrNull,
     GuestFrom: StringOrNull,
@@ -27,12 +27,12 @@ export type Guest = {
 }
 
 export type Room = {
-    RoomID: String,
-    RoomName: String,
-    RoomType: String
+    RoomID: string,
+    RoomName: string,
+    RoomType: string
 }
 export type Reservation = {
-    ReservationID: String,
+    ReservationID: string,
     RepresentGuest: Guest,
     Guests: Guest[]
 }
