@@ -49,6 +49,9 @@ export const ReservationInfos = (reservation: Reservation) =>{
                             <TableCell className="py-6" font-medium>
                                 {value.Checkout.Valid ? value.Checkout.String : "未定"}
                             </TableCell>
+                            <TableCell>
+                                {value.GuestRoom.RoomName}
+                            </TableCell>
                         </TableRow>
                     )
                    })
@@ -70,6 +73,9 @@ export const ReservationInfos = (reservation: Reservation) =>{
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.Checkout.Valid ? reservation.RepresentGuest.Checkout.String : "未定"}
+                    </TableCell>
+                    <TableCell className="py-6 font-medium">
+                        {reservation.RepresentGuest.GuestRoom.RoomName}
                     </TableCell>
                 </TableRow>}
                 
@@ -103,6 +109,9 @@ export const ReservationLists = ({isLoading,errorMessage,reservations}: Reservat
                         </TableHead>
                         <TableHead className="py-6" font-large>
                             宿泊者チェックアウト予定日
+                        </TableHead>
+                        <TableHead>
+                            宿泊者部屋名称
                         </TableHead>
                     </TableHeader>
                     <TableBody>
