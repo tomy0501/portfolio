@@ -1,4 +1,4 @@
-import type { Reservation } from "@/page/Hotel"
+import { getGenderLabel, type Reservation } from "@/page/Hotel"
 import { useState } from "react"
 import { Table,
     TableHeader,
@@ -32,6 +32,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
             day: "2-digit",
         }
     )
+
         return (
                 <>
                 {toggleOn ? 
@@ -45,7 +46,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestAge.Valid ? value.GuestAge.Int16.toString() : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestSex.Valid ? value.GuestSex.String : "不明"}
+                                {value.GuestSex.Valid ? getGenderLabel(value.GuestSex.String) : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
                                 {value.GuestFrom.Valid ? value.GuestFrom.String : "不明"}
@@ -70,7 +71,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.GuestAge.Valid ? reservation.RepresentGuest.GuestAge.Int16.toString() : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestSex.Valid ? reservation.RepresentGuest.GuestSex.String : "不明"}
+                        {reservation.RepresentGuest.GuestSex.Valid ? getGenderLabel(reservation.RepresentGuest.GuestSex.String) : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.GuestFrom.Valid ? reservation.RepresentGuest.GuestFrom.String : "不明"}

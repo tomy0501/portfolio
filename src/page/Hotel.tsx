@@ -15,11 +15,29 @@ export type StringOrNull = {
     Valid: boolean
 }
 
+export type Gender = 'male' | 'female' | 'other' | 'unknown'
+
+export const GENDER_LABELS: Record<Gender,string> = {
+    male : '男性',
+    female : '女性',
+    other : 'その他',
+    unknown : '不明'
+} as const;
+
+export const getGenderLabel = (gender: Gender): string => {
+  return GENDER_LABELS[gender];
+};
+
+export type GenderOrNull = {
+    String: Gender,
+    Valid : boolean
+}
+
 export type Guest = {
     GuestID: string,
     GuestName: string,
     GuestAge: Int16OrNull,
-    GuestSex: StringOrNull,
+    GuestSex: GenderOrNull,
     GuestFrom: StringOrNull,
     Checkin: StringOrNull,
     Checkout: StringOrNull

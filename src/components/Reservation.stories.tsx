@@ -18,7 +18,7 @@ type Story = StoryObj<typeof ReservationLists>
 
 
 const baseGuestArray : Guest[] = [1,2,3,4,5].map((num) =>{
-    const sex = num % 2 == 0 ? '男' : '女'
+    const sex = num % 2 == 0 ? 'male' : 'female'
     const RoomID = num < 3 ? '3411-1211-1455-1233' : '332-2344-2155aad-34ffed'
     const RoomName = num < 3 ? '極楽円' : '遊天の魔'
     const RoomType = num < 3 ? '大人用寝室' : '子供向け客間'
@@ -58,7 +58,7 @@ const testReservations : Reservation[] = [1,2,3,4].map((num)=>{
             RoomName: RoomName,
             RoomType: RoomType
         }
-        const sex = i % 2 === 0 ? "男" : "女"
+        const sex = i % 2 === 0 ? "male" : "female"
         const guest : Guest = {
             GuestID: `323da-32e98-11665-4344${i + num}`,
             GuestAge: {Valid:true,Int16:30 + num + i},
