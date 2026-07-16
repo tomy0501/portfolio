@@ -23,7 +23,7 @@ export type Guest = {
     GuestFrom: StringOrNull,
     Checkin: StringOrNull,
     Checkout: StringOrNull
-    GuestRoom: Room
+    Room: Room
 }
 
 export type Room = {

@@ -35,7 +35,7 @@ const baseGuestArray : Guest[] = [1,2,3,4,5].map((num) =>{
         Checkin: {Valid:true,String:'2026-11-11'},
         Checkout: {Valid:true,String:'2026-11-13'},
         GuestSex: {Valid:true,String:sex},
-        GuestRoom: Room
+        Room: Room
     }
     return guest
 })
@@ -64,7 +64,7 @@ const testReservations : Reservation[] = [1,2,3,4].map((num)=>{
             GuestAge: {Valid:true,Int16:30 + num + i},
             GuestFrom: {Valid:true,String:`新潟県新潟市西区${i + num}番地`},
             GuestName: `テストイノウエ${i + num}`,
-            GuestRoom: Room,
+            Room: Room,
             GuestSex: {Valid:true,String:sex},
             Checkin: {Valid:true,String:baseCheckin.toDateString()},
             Checkout: {Valid:true,String:baseCheckout.toDateString()}

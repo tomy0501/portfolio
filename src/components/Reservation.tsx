@@ -50,7 +50,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.Checkout.Valid ? value.Checkout.String : "未定"}
                             </TableCell>
                             <TableCell>
-                                {value.GuestRoom.RoomName}
+                                {value.Room.RoomName}
                             </TableCell>
                         </TableRow>
                     )
@@ -75,7 +75,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.Checkout.Valid ? reservation.RepresentGuest.Checkout.String : "未定"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestRoom.RoomName}
+                        {reservation.RepresentGuest.Room.RoomName}
                     </TableCell>
                 </TableRow>}
                 
