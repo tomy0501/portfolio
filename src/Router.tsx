@@ -2,7 +2,7 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import { LoginPage } from "./page/Login";
 import { Home } from "./page/Home";
 import { RootLayout } from "./page/RouterLayout";
-import { Hotel } from "./page/Hotel";
+import { HotelReservation } from "./page/Reservation";
 
 export const router = createBrowserRouter([
     {
@@ -22,8 +22,8 @@ export const router = createBrowserRouter([
                 element: <LoginPage/>
             },
             {
-                path: "hotels/:hotelID",
-                element: <Hotel />
+                path: "hotels/:hotelID/reservation",
+                element: <HotelReservation />
             }
         ]
     }

@@ -1,6 +1,6 @@
 import type { Meta,StoryObj } from '@storybook/react'
 import { ReservationLists } from './Reservation'
-import type { Reservation,Room,Guest } from '@/page/Hotel';
+import type { Reservation,Room,Guest } from '@/page/Reservation';
 
 const meta: Meta<typeof ReservationLists> = {
     title: "utility/Reservation",

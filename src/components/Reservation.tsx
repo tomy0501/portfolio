@@ -1,4 +1,4 @@
-import { getGenderLabel, type Reservation } from "@/page/Hotel"
+import { getGenderLabel, type Reservation } from "@/page/Reservation"
 import { useState } from "react"
 import { Table,
     TableHeader,
