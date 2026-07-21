@@ -3,6 +3,7 @@ import { LoginPage } from "./page/Login";
 import { Home } from "./page/Home";
 import { RootLayout } from "./page/RouterLayout";
 import { HotelReservation } from "./page/Reservation";
+import { Hotel } from "./page/Hotel"
 
 export const router = createBrowserRouter([
     {
@@ -22,8 +23,14 @@ export const router = createBrowserRouter([
                 element: <LoginPage/>
             },
             {
-                path: "hotels/:hotelID/reservation",
-                element: <HotelReservation />
+                path:"/hotels/:hotelID",
+                element:<Hotel />,
+                children:[                  
+                    {
+                        path: "/reservation",
+                        element: <HotelReservation />
+                    }
+                ]
             }
         ]
     }

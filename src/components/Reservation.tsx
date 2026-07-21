@@ -8,6 +8,8 @@ import { Table,
         TableCell
  } from "@/components/ui/table"
 
+ import { DEFAULT_DATE_FORMAT } from "@/utils/formatter"
+
 type ReservationProperty = {
     isLoading: boolean,
     errorMessage: string,
@@ -25,13 +27,7 @@ export const ReservationInfos = (reservation: Reservation) =>{
         event.preventDefault()
         setToggleOn(false)
     }
-    const formatter = new Intl.DateTimeFormat("ja-JP",
-        {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }
-    )
+    const formatter = DEFAULT_DATE_FORMAT
 
         return (
                 <>
