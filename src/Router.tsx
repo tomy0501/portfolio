@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
                 element:<Hotel />,
                 children:[                  
                     {
-                        path: "/hotels/:hotelID/reservation",
+                        path: "reservation",
                         element: <HotelReservation />
                     }
                 ]
