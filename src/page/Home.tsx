@@ -1,38 +1,13 @@
 import { Header } from '@/components/Header';
-import { Dashboard } from '@/components/DashBoard';
 import { useAuth } from '@/context/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { api } from '@/utils/api';
-import type { Hotel } from '@/type/hotel'
-import { useEffect,useState } from 'react';
-type apiMessage = {
-    message: string,
-    value: Hotel[]
-}
+import { Outlet } from 'react-router-dom';
+
 
 export const Home = () => {
     try{
         const userAuth = useAuth()
         const userName = userAuth.userName
-        const [hotels, setHotels] = useState<Hotel[]>([]);
-        const [loading, setLoading] = useState<boolean>(true);
-        const [error, setError] = useState<string>('');
-        useEffect(() =>{
-            const fetchHotel = async () =>{
-
-                setError('')
-
-                try{
-                    const response = await api.get<apiMessage>('/api/facility')
-                    setHotels(response.data.value)
-                }catch(error:any){
-                   setError(error)
-                }finally{
-                    setLoading(false)
-                }
-            }
-            fetchHotel()
-        },[])
         if (userName === ""){
             return (
                 <Navigate to="/login" replace/>
@@ -41,7 +16,7 @@ export const Home = () => {
         return  ( 
                     <div className='w-full'>
                         <Header userName={userName} logout={userAuth.logout} />
-                        <Dashboard isLoading={loading} hotels={hotels} errorMessage={error}/>
+                        <Outlet/>
                     </div>
                 )
     }catch(error:any){

@@ -4,6 +4,7 @@ import { Home } from "./page/Home";
 import { RootLayout } from "./page/RouterLayout";
 import { HotelReservation } from "./page/Reservation";
 import { Hotel } from "./page/Hotel"
+import { DashboardLayout } from "./page/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -14,22 +15,30 @@ export const router = createBrowserRouter([
                 index:true,
                 loader: () => redirect("/home")
             },
-            {
-                path: "/home",
-                element: <Home />
-            },
+            
             {
                 path: "/login",
                 element: <LoginPage/>
             },
             {
-                path:"/hotels/:hotelID",
-                element:<Hotel />,                              
+                path: "",
+                element: <Home />,
+                children:[
+                    {
+                        path:"/home",
+                        element:<DashboardLayout/>
+                    },
+                    {
+                        path:"/hotels/:hotelID",
+                        element:<Hotel />,                              
+                    },
+                    {
+                        path: "/hotels/:hotelID/reservation",
+                        element: <HotelReservation />
+                    }
+                ]
             },
-            {
-                path: "/hotels/:hotelID/reservation",
-                element: <HotelReservation />
-            }
+          
         ]
         
     }

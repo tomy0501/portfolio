@@ -1,8 +1,6 @@
-import { useAuth } from "@/context/AuthContext"
 import { useEffect, useState } from "react"
 import { api } from "@/utils/api"
-import { useNavigate ,useParams} from "react-router-dom"
-import { Header } from "@/components/Header"
+import {useParams} from "react-router-dom"
 import { ReservationLists } from "@/components/Reservation"
 
 export type Int16OrNull = {
@@ -61,15 +59,9 @@ type ReservationMessage = {
 }
 export const HotelReservation= () =>{
     try{
-        const auth = useAuth()
-        const userName = auth.userName
         const [reservations,setReservations] = useState<Reservation[]>([])
         const [isLoading,setIsLoading] = useState<boolean>(true)
         const [errorMessage,setErrorMessage] = useState<string>("")
-        const navigate = useNavigate()
-        if (userName == ""){
-            navigate("/home")
-        }
         const {hotelID} = useParams()
         useEffect(() =>{
             const getAllReservation = async () => {
@@ -94,13 +86,8 @@ export const HotelReservation= () =>{
             getAllReservation()
         },[])
         return (
-            <div className='w-full'>
-            <Header userName={userName} logout={auth.logout}
-            ></Header>
             <ReservationLists reservations={reservations} isLoading={isLoading} errorMessage={errorMessage}/>
-            </div>
-            
-           
+   
         )
     }catch(error){
        

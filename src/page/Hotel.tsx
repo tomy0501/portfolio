@@ -2,7 +2,6 @@ import { useAuth } from "@/context/AuthContext"
 import { useEffect, useState } from "react"
 import { api } from "@/utils/api"
 import { useNavigate ,useParams} from "react-router-dom"
-import { Header } from "@/components/Header"
 import { HotelIndex } from "@/components/HotelIndex"
 
 export type Authoritys = "staff" | "owner" | "other"
@@ -20,7 +19,6 @@ export const Hotel = () => {
     const auth = useAuth()
     const navigate = useNavigate()
     const {hotelID} = useParams()
-    const userName = auth.userName
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const [errorMessage,setErrorMessage] = useState<string>("")
     const [hotelData,setHotelData] = useState<HotelInfos|null>(null)
@@ -37,9 +35,7 @@ export const Hotel = () => {
     const setSeasonality = (hotelID:string) => {
         navigate(`/hotels/${hotelID}/seasonality`)
     }
-    if (userName === ""){
-        navigate("/login")
-    }
+
     useEffect(() => {
         const getHotelInfo = async () =>{
             try{
@@ -62,11 +58,8 @@ export const Hotel = () => {
     },[]
     )
     return (
-        <div>
-            <Header userName={userName} logout={auth.logout}/>
-            <HotelIndex userName={userName} isLoading={isLoading} errorMessage={errorMessage}
+            <HotelIndex userName={auth.userName} isLoading={isLoading} errorMessage={errorMessage}
              hotelInfos={hotelData} seeReservation={getReservation} seeRoomInfo={getRoom} seeCustomerInfo={getGuest}
              setSeasonality={setSeasonality} hotelID={hotelID} />
-        </div>
     )
 }
