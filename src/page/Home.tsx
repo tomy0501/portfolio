@@ -16,7 +16,9 @@ export const Home = () => {
         return  ( 
                     <div className='w-full'>
                         <Header userName={userName} logout={userAuth.logout} />
-                        <Outlet/>
+                        <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
+                            <Outlet/>
+                        </div>
                     </div>
                 )
     }catch(error:any){
