@@ -59,7 +59,7 @@ export const Hotel = () => {
             
         }
         getHotelInfo()
-    }
+    },[]
     )
     return (
         <div>
