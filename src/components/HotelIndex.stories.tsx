@@ -22,7 +22,6 @@ export default meta;
 type Story = StoryObj<typeof HotelIndex>
 
 const baseHotelInfos:HotelInfos = {
-    hotelID:"test",
     hotelName:"テスト施設",
     authority:"staff"
 }
@@ -32,6 +31,7 @@ export const Default: Story = {
         isLoading:false,
         errorMessage:"",
         userName:"トミー",
-        hotelInfos:baseHotelInfos
+        hotelInfos:baseHotelInfos,
+        hotelID:"test"
     }
 }

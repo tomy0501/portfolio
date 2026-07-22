@@ -5,31 +5,32 @@ type HotelProperty = {
     errorMessage:string,
     hotelInfos:HotelInfos | null
     userName:string,
+    hotelID:string | undefined
     seeReservation: (hotelID:string) => void,
     seeRoomInfo:(hotelID:string) => void,
     seeCustomerInfo:(hotelID:string) => void,
     setSeasonality:(hotelID:string) => void
 }
 
-export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,seeReservation,seeRoomInfo,seeCustomerInfo,setSeasonality}:HotelProperty) =>{
-    if (hotelInfos !== null){
+export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,hotelID,seeReservation,seeRoomInfo,seeCustomerInfo,setSeasonality}:HotelProperty) =>{
+    if (hotelInfos !== null && hotelID){
         const getReservation = (event:React.MouseEvent) => {
             event.preventDefault()
-            seeReservation(hotelInfos.hotelID)
+            seeReservation(hotelID)
         }
         const getRoom = (event:React.MouseEvent) =>{
             event.preventDefault()
-            seeRoomInfo(hotelInfos.hotelID)
+            seeRoomInfo(hotelID)
         }
 
         const getGuestInfo = (event:React.MouseEvent) => {
             event.preventDefault()
-            seeCustomerInfo(hotelInfos.hotelID)
+            seeCustomerInfo(hotelID)
         }
 
         const openSeasonalityDisplay = (event:React.MouseEvent) => {
             event.preventDefault()
-            setSeasonality(hotelInfos.hotelID)
+            setSeasonality(hotelID)
         }
         return (
 

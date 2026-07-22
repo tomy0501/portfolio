@@ -10,7 +10,6 @@ export type Authoritys = "staff" | "owner" | "other"
 export type HotelInfos = {
     authority:Authoritys,
     hotelName:string,
-    hotelID:string
 }
 
 export type HotelMessages = {
@@ -20,7 +19,7 @@ export type HotelMessages = {
 export const Hotel = () => {
     const auth = useAuth()
     const navigate = useNavigate()
-    const hotelID = useParams()
+    const {hotelID} = useParams()
     const userName = auth.userName
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const [errorMessage,setErrorMessage] = useState<string>("")
@@ -67,7 +66,7 @@ export const Hotel = () => {
             <Header userName={userName} logout={auth.logout}/>
             <HotelIndex userName={userName} isLoading={isLoading} errorMessage={errorMessage}
              hotelInfos={hotelData} seeReservation={getReservation} seeRoomInfo={getRoom} seeCustomerInfo={getGuest}
-             setSeasonality={setSeasonality} />
+             setSeasonality={setSeasonality} hotelID={hotelID} />
         </div>
     )
 }
