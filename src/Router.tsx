@@ -24,14 +24,13 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/hotels/:hotelID",
-                element:<Hotel />,
-                children:[                  
-                    {
-                        path: "reservation",
-                        element: <HotelReservation />
-                    }
-                ]
+                element:<Hotel />,                              
+            },
+            {
+                path: "/hotels/:hotelID/reservation",
+                element: <HotelReservation />
             }
         ]
+        
     }
    ]);
