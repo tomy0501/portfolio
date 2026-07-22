@@ -43,7 +43,7 @@ export const Hotel = () => {
     useEffect(() => {
         const getHotelInfo = async () =>{
             try{
-                const hotelInfo = await api.get<HotelMessages>(`hotel/${hotelID}`)
+                const hotelInfo = await api.get<HotelMessages>(`/api/hotel/${hotelID}`)
                 if(hotelInfo.data?.value == null){
                     setErrorMessage("ホテルの情報がありません")
                 }else{
