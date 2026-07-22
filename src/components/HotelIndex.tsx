@@ -13,6 +13,12 @@ type HotelProperty = {
 }
 
 export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,hotelID,seeReservation,seeRoomInfo,seeCustomerInfo,setSeasonality}:HotelProperty) =>{
+    if(isLoading){
+        return (
+            <h2>しばらくお待ちください</h2>
+        )
+    }
+    
     if (hotelInfos !== null && hotelID){
         const getReservation = (event:React.MouseEvent) => {
             event.preventDefault()
@@ -35,7 +41,7 @@ export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,hotelID,s
         return (
 
         <>
-            {isLoading ? <h2>しばらくお待ちください</h2>:errorMessage !== "" ?<p>{errorMessage}</p> : 
+            {errorMessage !== "" ?<p>{errorMessage}</p> : 
                 <div>
                     <p>{hotelInfos.hotelName}のプロパティ</p>
                     <p>{userName}さんの権限は{hotelInfos.authority}です</p>
@@ -50,11 +56,13 @@ export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,hotelID,s
             }
         </>
         )
+    }else{
+        return(
+            <p>ホテルデータが取得できませんでした。</p>
+        )
     }
 
-    return (
-        <p>ホテルの情報にアクセスできませんでした。</p>
-    )
+    
         
     
 }
