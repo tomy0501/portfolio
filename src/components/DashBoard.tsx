@@ -19,7 +19,7 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
         navigate(`/hotels/${hotelID}`)
     }
     return (
-        <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
+        <>
             {isLoading  ? 
             <h1 className="text-3xl font-bold text-orange">ロード中です…お待ちください</h1> :
             errorMessage !== "" ? <p>{errorMessage}</p>:
@@ -50,6 +50,6 @@ export const Dashboard = ({ isLoading,hotels,errorMessage} : DashboardPropertys)
                 </TableBody>
             </Table>
             }
-        </div>
+        </>
     )
 }
