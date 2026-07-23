@@ -42,14 +42,14 @@ export const HotelIndex = ({isLoading,errorMessage,userName,hotelInfos,hotelID,s
 
         <>
             {errorMessage !== "" ?<p>{errorMessage}</p> : 
-                <div className="w-full">
-                    <h2>{hotelInfos.hotelName}のプロパティ</h2>
-                    <p className="text-green-100">{userName}さんの権限は{hotelInfos.authority}です</p>
-                    <ul className="list-disc">
-                        <li className="o" onClick={getReservation}>予約状況をみる</li>
-                        <li onClick={getRoom}>部屋情報をみる</li>
-                        <li onClick={getGuestInfo}>宿泊者情報をみる</li>
-                        <li onClick={openSeasonalityDisplay}>シーズナリティの設定をする</li>
+                <div className="w-full flex justify-center flex-col items-center gap-10">
+                    <h2 className="font-bold text-lg">{hotelInfos.hotelName}のプロパティ</h2>
+                    <p className="text-green-500 font-bold text-lg">{userName}さんの権限は{hotelInfos.authority}です</p>
+                    <ul className="flex gap-10 flex-wrap">
+                        <li className="border p-3 cursor-pointer hover:bg-black hover:text-white" onClick={getReservation}>予約状況をみる</li>
+                        <li className="border p-3 cursor-pointer hover:bg-black hover:text-white" onClick={getRoom}>部屋情報をみる</li>
+                        <li className="border p-3 cursor-pointer hover:bg-black hover:text-white" onClick={getGuestInfo}>宿泊者情報をみる</li>
+                        <li className="border p-3 cursor-pointer hover:bg-black hover:text-white" onClick={openSeasonalityDisplay}>シーズナリティの設定をする</li>
                     </ul>
                     
                 </div>
