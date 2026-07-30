@@ -5,7 +5,7 @@ import { RootLayout } from "./page/RouterLayout";
 import { HotelReservation } from "./page/Reservation";
 import { Hotel } from "./page/Hotel"
 import { DashboardLayout } from "./page/Dashboard";
-import { RoomPage } from "./page/Reservation";
+import { RoomPage } from "./page/Room";
 
 export const router = createBrowserRouter([
     {
