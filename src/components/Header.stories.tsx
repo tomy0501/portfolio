@@ -9,7 +9,8 @@ const meta: Meta<typeof Header> = {
         layouts: "centered"
     },
     argTypes:{
-        logout: { action: "submitted"}
+        logout: { action: "submitted"},
+        gotoHome: {action: "clicked"}
     }
 }
 

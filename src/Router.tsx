@@ -40,6 +40,9 @@ export const router = createBrowserRouter([
                     {
                         path:"/hotels/:hotelID/room",
                         element:<RoomPage/>
+                    },
+                    {
+                        path:"*"
                     }
                 ]
             },

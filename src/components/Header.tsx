@@ -2,13 +2,19 @@
 type HeaderProps = {
     userName: string;
     logout: () => void;
+    gotoHome: () => void;
 };
 
-export const Header = ({ userName ,logout}: HeaderProps) => {
+export const Header = ({ userName ,logout,gotoHome}: HeaderProps) => {
 
     const handlerLogout = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
         logout()
+    }
+
+    const gotoTop = (event:React.MouseEvent) =>{
+        event.preventDefault()
+        gotoHome()
     }
     return (
         <header className="bg-white shadow w-full">
@@ -21,6 +27,9 @@ export const Header = ({ userName ,logout}: HeaderProps) => {
                     <button className="text-lg text-gray-500 bg-cyan-500 
                     text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
                     hover:bg-white hover:text-black cursor-pointer" type="submit">ログアウトする</button>
+                    <button className="text-lg text-gray-500 bg-cyan-500 
+                    text-white rounded-xl h-10 self-center px-5 border border-solid border-orange-500
+                    hover:bg-white hover:text-black cursor-pointer" onClick={gotoTop}>トップへ戻る</button>
                 </div>
             </form>
         </header>

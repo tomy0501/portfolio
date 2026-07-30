@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header';
 import { useAuth } from '@/context/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate,useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
 
@@ -13,9 +13,13 @@ export const Home = () => {
                 <Navigate to="/login" replace/>
             )
         }
+        const navigate = useNavigate()
+        const gotoHome = () => {
+            navigate("/home")
+        }
         return  ( 
                     <div className='w-full'>
-                        <Header userName={userName} logout={userAuth.logout} />
+                        <Header userName={userName} logout={userAuth.logout} gotoHome={gotoHome}/>
                         <div className="flex items-start justify-center m-auto min-h-screen bg-gray-100">
                             <Outlet/>
                         </div>
