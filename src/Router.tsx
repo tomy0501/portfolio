@@ -6,6 +6,7 @@ import { HotelReservation } from "./page/Reservation";
 import { Hotel } from "./page/Hotel"
 import { DashboardLayout } from "./page/Dashboard";
 import { RoomPage } from "./page/Room";
+import { NotFound } from "./page/NotFound";
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,8 @@ export const router = createBrowserRouter([
                         element:<RoomPage/>
                     },
                     {
-                        path:"*"
+                        path:"*",
+                        element:<NotFound/>
                     }
                 ]
             },
