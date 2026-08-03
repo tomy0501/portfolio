@@ -39,19 +39,19 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestName}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestAge.Valid ? value.GuestAge.Int16.toString() : "不明"}
+                                {value.GuestAge ?? "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestSex.Valid ? getGenderLabel(value.GuestSex.String) : "不明"}
+                                {value.GuestSex ? getGenderLabel(value.GuestSex) : "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.GuestFrom.Valid ? value.GuestFrom.String : "不明"}
+                                {value.GuestFrom ?? "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkin.Valid ? formatter.format(new Date(value.Checkin.String)): "未定"}
+                                {value.Checkin ?? "未定"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkout.Valid ? formatter.format(new Date(value.Checkout.String)) : "未定"}
+                                {value.Checkout ?? "未定"}
                             </TableCell>
                             <TableCell>
                                 {value.Room.RoomName}
@@ -64,19 +64,19 @@ export const ReservationInfos = (reservation: Reservation) =>{
                         {reservation.RepresentGuest.GuestName}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestAge.Valid ? reservation.RepresentGuest.GuestAge.Int16.toString() : "不明"}
+                        {reservation.RepresentGuest.GuestAge ?? "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestSex.Valid ? getGenderLabel(reservation.RepresentGuest.GuestSex.String) : "不明"}
+                        {reservation.RepresentGuest.GuestSex ? getGenderLabel(reservation.RepresentGuest.GuestSex) : "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.GuestFrom.Valid ? reservation.RepresentGuest.GuestFrom.String : "不明"}
+                        {reservation.RepresentGuest.GuestFrom ?? "不明"}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkin.Valid ? formatter.format(new Date(reservation.RepresentGuest.Checkin.String)) : "未定"}
+                        {reservation.RepresentGuest.Checkin == null ? "未定" : formatter.format(new Date(reservation.RepresentGuest.Checkin))}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
-                        {reservation.RepresentGuest.Checkout.Valid ? formatter.format(new Date(reservation.RepresentGuest.Checkout.String)) : "未定"}
+                        {reservation.RepresentGuest.Checkout == null ? "未定" : formatter.format(new Date(reservation.RepresentGuest.Checkout))}
                     </TableCell>
                     <TableCell className="py-6 font-medium">
                         {reservation.RepresentGuest.Room.RoomName}
