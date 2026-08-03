@@ -48,10 +48,10 @@ export const ReservationInfos = (reservation: Reservation) =>{
                                 {value.GuestFrom ?? "不明"}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkin ?? "未定"}
+                                {value.Checkin == null ? "未定" : formatter.format(new Date(value.Checkin))}
                             </TableCell>
                             <TableCell className="py-6" font-medium>
-                                {value.Checkout ?? "未定"}
+                                {value.Checkout == null ? "未定" : formatter.format(new Date(value.Checkout))}
                             </TableCell>
                             <TableCell>
                                 {value.Room.RoomName}
