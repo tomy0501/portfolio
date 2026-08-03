@@ -29,12 +29,12 @@ const baseGuestArray : Guest[] = [1,2,3,4,5].map((num) =>{
     }
     const guest : Guest = {
         GuestID: `323da-32e98-11665-4341${num}`,
-        GuestAge: { Valid: true,Int16:30 + num},
-        GuestFrom: {Valid:true,String:`新潟市西区${num}丁目` },
+        GuestAge: 30 + num,
+        GuestFrom: `新潟市西区${num}丁目`,
         GuestName: `テスト${num}さん`,
-        Checkin: {Valid:true,String:'2026-11-11'},
-        Checkout: {Valid:true,String:'2026-11-13'},
-        GuestSex: {Valid:true,String:sex},
+        Checkin: '2026-11-11',
+        Checkout: '2026-11-13',
+        GuestSex: sex,
         Room: Room
     }
     return guest
@@ -61,13 +61,13 @@ const testReservations : Reservation[] = [1,2,3,4].map((num)=>{
         const sex = i % 2 === 0 ? "male" : "female"
         const guest : Guest = {
             GuestID: `323da-32e98-11665-4344${i + num}`,
-            GuestAge: {Valid:true,Int16:30 + num + i},
-            GuestFrom: {Valid:true,String:`新潟県新潟市西区${i + num}番地`},
+            GuestAge: 30 + num + i,
+            GuestFrom: `新潟県新潟市西区${i + num}番地`,
             GuestName: `テストイノウエ${i + num}`,
             Room: Room,
-            GuestSex: {Valid:true,String:sex},
-            Checkin: {Valid:true,String:baseCheckin.toDateString()},
-            Checkout: {Valid:true,String:baseCheckout.toDateString()}
+            GuestSex: sex,
+            Checkin: baseCheckin.toDateString(),
+            Checkout: baseCheckout.toDateString()
         }
         guests.push(guest)
     }
