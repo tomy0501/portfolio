@@ -24,12 +24,15 @@ export const Header = ({ userName ,logout,gotoHome}: HeaderProps) => {
                         <h1 className="text-3xl font-bold text-gray-900">My App</h1>
                         <p className="text-lg text-gray-600">Welcome, {userName}!</p>
                     </div>
-                    <button className="text-lg text-gray-500 bg-cyan-500 
-                    text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
-                    hover:bg-white hover:text-black cursor-pointer" type="submit">ログアウトする</button>
-                    <button className="text-lg text-gray-500 bg-cyan-500 
-                    text-white rounded-xl h-10 self-center px-5 border border-solid border-orange-500
-                    hover:bg-white hover:text-black cursor-pointer" onClick={gotoTop}>トップへ戻る</button>
+                    <div className="flex gap-3">
+                         <button className="text-lg text-gray-500 bg-cyan-500 
+                        text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
+                        hover:bg-white hover:text-black cursor-pointer" type="submit">ログアウトする</button>
+                        <button className="text-lg text-gray-500 bg-cyan-500 
+                        text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
+                        hover:bg-white hover:text-black cursor-pointer" onClick={gotoTop}>トップへ戻る</button>
+                    </div>
+                   
                 </div>
             </form>
         </header>

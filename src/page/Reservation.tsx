@@ -3,16 +3,6 @@ import { api } from "@/utils/api"
 import {useParams} from "react-router-dom"
 import { ReservationLists } from "@/components/Reservation"
 
-export type Int16OrNull = {
-    Int16: number,
-    Valid: boolean
-}
-
-export type StringOrNull = {
-    String: string,
-    Valid: boolean
-}
-
 export type Gender = 'male' | 'female' | 'other' | 'unknown' 
 
 export const GENDER_LABELS: Record<Gender,string> = {
@@ -25,11 +15,6 @@ export const GENDER_LABELS: Record<Gender,string> = {
 export const getGenderLabel = (gender: Gender): string => {
   return GENDER_LABELS[gender];
 };
-
-export type GenderOrNull = {
-    String: Gender,
-    Valid : boolean
-}
 
 export type Guest = {
     GuestID: string,
