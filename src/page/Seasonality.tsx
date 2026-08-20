@@ -24,7 +24,7 @@ type SeasonalityPriceMessage = {
     value: SeasonalityPrice[]
 }
 export const Seasonality = () =>{
-    const [isLoading,setIsLoading] = useState<boolean>(false)
+    const [isLoading,setIsLoading] = useState<boolean>(true)
     const [errorMessage,setErrorMessage] = useState<string>("")
     const [seasonality,setSeasonality] = useState<Seasonality[]|null>(null)
     const {hotelID} = useParams()
@@ -52,7 +52,7 @@ export const Seasonality = () =>{
                 setErrorMessage("シーズナリティが取得できませんでした")
                 console.log(error)
             }finally{
-                setIsLoading(true)
+                setIsLoading(false)
             }
         }
         getSeasonality()
