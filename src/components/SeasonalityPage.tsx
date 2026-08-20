@@ -38,7 +38,7 @@ export const SeasonalityTable = ({isLoading,errorMessage,seasonality,getSeasonal
             <TableBody>
                 {seasonality.map(value => {
                    return (
-                        <SeasonalityGetRow seasonalityName={value.seasonalityName} seasonalityID={value.sesonalityID}
+                        <SeasonalityGetRow seasonalityName={value.seasonalityName} seasonalityID={value.seasonalityID}
                          getSeasonalityDetail={getSeasonalityDetail}/>
                    )
                 })}
@@ -97,7 +97,7 @@ export const SeasonalityGetRow = ({seasonalityName,seasonalityID,getSeasonalityD
             : seasonalityPrices !== null && toggle ?
                 seasonalityPrices.map(value => {
                     return (
-                        <TableRow>
+                        <TableRow key={value.sesonalityPriceID}>
                             <TableCell>{seasonalityName}</TableCell>
                             <TableCell>{value.numberOfPeople}</TableCell>
                             <TableCell>{value.price}</TableCell>
