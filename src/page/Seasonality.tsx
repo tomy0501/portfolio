@@ -4,7 +4,7 @@ import { api } from "@/utils/api"
 import { SeasonalityTable } from "@/components/SeasonalityPage";
 
 export type Seasonality = {
-    sesonalityID: string,
+    seasonalityID: string,
     seasonalityName:string
 }
 
