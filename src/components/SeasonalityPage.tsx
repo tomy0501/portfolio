@@ -97,7 +97,7 @@ export const SeasonalityGetRow = ({seasonalityName,seasonalityID,getSeasonalityD
             : seasonalityPrices !== null && toggle ?
                 seasonalityPrices.map(value => {
                     return (
-                        <TableRow key={value.sesonalityPriceID}>
+                        <TableRow onClick={clickShowDetail} key={value.sesonalityPriceID}>
                             <TableCell>{seasonalityName}</TableCell>
                             <TableCell>{value.numberOfPeople}</TableCell>
                             <TableCell>{value.price}</TableCell>
