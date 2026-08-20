@@ -14,7 +14,7 @@ type SeasonalityMessage = {
 }
 
 export type SeasonalityPrice = {
-    sesonalityNumberID: string,
+    sesonalityPriceID: string,
     numberOfPeople: number,
     price: number
 }
