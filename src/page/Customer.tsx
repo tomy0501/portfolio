@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
 import { CustomerTable } from "@/components/CustomerPage";
 import type { Gender } from "./Reservation";
 import { api } from "@/utils/api";
@@ -15,10 +16,11 @@ export const Customer = () => {
     const [customers, setCustomers] = useState<Person[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string>("");
+    const {hotelID} = useParams()
     useEffect(() => {
         const getAllCustomers = async () => {
             try {
-                const data = await api.get<{ message: string; value: Person[] | null }>(`/api/allCustomers`);
+                const data = await api.get<{ message: string; value: Person[] | null }>(`/api/allGuest/${hotelID}`);
                 if (data.status !== 200) {
                     throw new Error("Cannot get customers");
                 }

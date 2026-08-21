@@ -8,6 +8,7 @@ import { DashboardLayout } from "./page/Dashboard";
 import { RoomPage } from "./page/Room";
 import { NotFound } from "./page/NotFound";
 import { Seasonality } from "./page/Seasonality";
+import { Customer } from "./page/Customer";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
                     {
                         path:"/hotels/:hotelID/seasonality",
                         element:<Seasonality/>
+                    },
+                    {
+                        path:"/hotels/:hotelID/guest",
+                        element:<Customer/>
                     },
                     {
                         path:"*",
