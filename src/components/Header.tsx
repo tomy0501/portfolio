@@ -25,10 +25,10 @@ export const Header = ({ userName ,logout,gotoHome}: HeaderProps) => {
                         <p className="text-lg text-gray-600">Welcome, {userName}!</p>
                     </div>
                     <div className="flex gap-3">
-                         <button className="text-[clamp(1rem,1.5vw,2rem)] text-gray-500 bg-cyan-500 
+                         <button className="text-[clamp(0.7rem,1.5vw,2rem)] text-gray-500 bg-cyan-500 
                         text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
                         hover:bg-white hover:text-black cursor-pointer" type="submit">ログアウトする</button>
-                        <button className="text-[clamp(1rem,1.5vw,2rem)] text-gray-500 bg-cyan-500 
+                        <button className="text-[clamp(0.7rem,1.5vw,2rem)] text-gray-500 bg-cyan-500 
                         text-white rounded-xl h-10 self-center px-5 border border-solid border-cyan-500
                         hover:bg-white hover:text-black cursor-pointer" onClick={gotoTop}>トップへ戻る</button>
                     </div>
