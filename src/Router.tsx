@@ -9,6 +9,7 @@ import { RoomPage } from "./page/Room";
 import { NotFound } from "./page/NotFound";
 import { Seasonality } from "./page/Seasonality";
 import { Customer } from "./page/Customer";
+import { RoomPrice } from "./page/RoomPrices";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
                     {
                         path:"/hotels/:hotelID/guest",
                         element:<Customer/>
+                    },
+                    {
+                        path:"/price/:hotelID/:roomID/:month",
+                        element:<RoomPrice/>
                     },
                     {
                         path:"*",

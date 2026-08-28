@@ -19,8 +19,15 @@ export const RoomPage = () =>{
     const [rooms,setRooms] = useState<Room[]|null>(null)
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const navigate = useNavigate()
+    const now = new Date()
+    const year = now.getFullYear()
+
+    // getMonth()は0始まりのため+1し、文字列に変換してから2桁にパディング
+    const date = String(now.getMonth() + 1).padStart(2, '0'); 
+
+    const formattedDate = `${year}-${date}`;
     const jumpRoomDetail = (roomID:string) =>{
-        navigate(roomID)
+        navigate(`/price/${hotelID}/${roomID}/${formattedDate}`)
     }
     useEffect(() =>{
         const roomGetter = async () =>{
