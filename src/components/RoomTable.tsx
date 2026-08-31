@@ -1,4 +1,4 @@
-import { type Room } from "@/page/Reservation"
+import { type Room } from "@/page/Room"
 import { Table,
         TableBody,
         TableHeader,
@@ -34,8 +34,8 @@ export const RoomTable = ({isLoading,errorMessage,rooms,gotoRoomDetail}:RoomTabl
                 <TableBody>
                     {rooms.map(value => {
                         return (
-                            <TableRow onClick={() =>{
-                                gotoRoomDetail(value.RoomID)
+                            <TableRow key={value.RoomID} onClick={() =>{
+                                gotoRoomDetail(value.RoomTypeID)
                             }}>
                                 <TableCell>{value.RoomName}</TableCell>
                                 <TableCell>{value.RoomType}</TableCell>

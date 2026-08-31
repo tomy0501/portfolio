@@ -2,10 +2,11 @@ import { useEffect,useState } from "react"
 import { api } from "@/utils/api"
 import { useParams,useNavigate } from "react-router-dom"
 import { RoomTable } from "@/components/RoomTable"
-type Room = {
+export type Room = {
     RoomID: string,
     RoomName:string,
-    RoomType:string
+    RoomType:string,
+    RoomTypeID:string
 }
 
 type RoomMessage = {
