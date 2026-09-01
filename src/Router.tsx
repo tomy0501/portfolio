@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
                         element:<Customer/>
                     },
                     {
-                        path:"/price/:hotelID/:roomID/:month",
+                        path:"/price/:hotelID/:roomTypeID/:month",
                         element:<RoomPrice/>
                     },
                     {
