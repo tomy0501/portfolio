@@ -10,7 +10,7 @@ const meta: Meta<typeof RoomTable> = {
         layouts: "centered"
     },
     argTypes:{
-        gotoRoomDetail: {action:"click"}
+        checkSeasonality: {action:"click"}
     }
 }
 
@@ -22,14 +22,18 @@ const room1 : Room = {
     RoomID: "testRoom",
     RoomName:"tesutoroom",
     RoomType:"testRoomType",
-    RoomTypeID:"testRoomTypeID"
+    RoomTypeID:"testRoomTypeID",
+    SeasonalityID:"testSeasonalityID",
+    SeasonalityName:"testSeasonalityName"
 }
     
 const room2 : Room = {
     RoomID: "room2",
     RoomName:"tesutoroom2",
     RoomType:"testroomtype2",
-    RoomTypeID:"testRoomTypeID2"
+    RoomTypeID:"testRoomTypeID2",
+    SeasonalityID:null,
+    SeasonalityName:null
 }
 
 const rooms : Room[] = [room1,room2]
