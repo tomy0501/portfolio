@@ -1,5 +1,5 @@
 import type { Meta,StoryObj} from '@storybook/react'
-import type { Room } from '@/page/Reservation';
+import type { Room } from '@/page/Room';
 import { RoomTable } from '@/components/RoomTable'
 
 
@@ -21,13 +21,15 @@ type Story = StoryObj<typeof RoomTable>
 const room1 : Room = {
     RoomID: "testRoom",
     RoomName:"tesutoroom",
-    RoomType:"testRoomType"
+    RoomType:"testRoomType",
+    RoomTypeID:"testRoomTypeID"
 }
     
 const room2 : Room = {
     RoomID: "room2",
     RoomName:"tesutoroom2",
-    RoomType:"testroomtype2"
+    RoomType:"testroomtype2",
+    RoomTypeID:"testRoomTypeID2"
 }
 
 const rooms : Room[] = [room1,room2]
