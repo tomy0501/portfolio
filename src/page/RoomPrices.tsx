@@ -7,7 +7,7 @@ export type SeasonalityPrices = {
     price : number
 }
 export type CalenderPrice = {
-    day: Date,
+    date: Date,
     seasonality: SeasonalityPrices[]
 }
 

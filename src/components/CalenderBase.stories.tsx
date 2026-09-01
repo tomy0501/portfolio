@@ -41,7 +41,7 @@ const testDays = getThisMonth(testMonth)
 console.log(testDays)
 const testCalenderPrices : CalenderPrice[] = testDays.map(value => {
     const testCalenderPrice : CalenderPrice = {
-        day:value,
+        date:value,
         seasonality:TestSeasonalityPrice
     }
     return testCalenderPrice
