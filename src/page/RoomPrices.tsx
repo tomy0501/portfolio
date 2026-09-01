@@ -20,11 +20,11 @@ export const RoomPrice = () => {
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const [errorMessage,isSetErrorMessage] = useState<string>("")
     const [calenderPrices,setCalenderPrices] = useState<CalenderPrice[]|null>(null)
-    const {hotelID,roomID,month} = useParams()
+    const {hotelID,roomTypeID,month} = useParams()
     useEffect(() =>{
         const getCalenderPrices = async () => {
             try{
-                const result = await api.get<CalenderPriceMessage>(`/api/priceCalender/${hotelID}/${roomID}/${month}`)
+                const result = await api.get<CalenderPriceMessage>(`/api/priceCalender/${hotelID}/${roomTypeID}/${month}`)
                 if(result.status !== 200){
                     throw new Error("status Error")
                 }

@@ -27,8 +27,8 @@ export const RoomPage = () =>{
     const date = String(now.getMonth() + 1).padStart(2, '0'); 
 
     const formattedDate = `${year}-${date}`;
-    const jumpRoomDetail = (roomID:string) =>{
-        navigate(`/price/${hotelID}/${roomID}/${formattedDate}`)
+    const jumpRoomDetail = (roomTypeID:string) =>{
+        navigate(`/price/${hotelID}/${roomTypeID}/${formattedDate}`)
     }
     useEffect(() =>{
         const roomGetter = async () =>{
