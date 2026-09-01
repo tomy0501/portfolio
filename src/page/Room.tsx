@@ -6,7 +6,9 @@ export type Room = {
     RoomID: string,
     RoomName:string,
     RoomType:string,
-    RoomTypeID:string
+    RoomTypeID:string,
+    SeasonalityID:string | null,
+    SeasonalityName:string | null
 }
 
 type RoomMessage = {
@@ -27,8 +29,8 @@ export const RoomPage = () =>{
     const date = String(now.getMonth() + 1).padStart(2, '0'); 
 
     const formattedDate = `${year}-${date}`;
-    const jumpRoomDetail = (roomTypeID:string) =>{
-        navigate(`/price/${hotelID}/${roomTypeID}/${formattedDate}`)
+    const checkSeasonality = (seasonalityID:string) =>{
+        navigate(`/price/${hotelID}/${seasonalityID}/${formattedDate}`)
     }
     useEffect(() =>{
         const roomGetter = async () =>{
@@ -51,6 +53,6 @@ export const RoomPage = () =>{
     },[])
     
     return (
-        <RoomTable errorMessage={errorMessage} isLoading={isLoading} rooms={rooms} gotoRoomDetail={jumpRoomDetail}></RoomTable>
+        <RoomTable errorMessage={errorMessage} isLoading={isLoading} rooms={rooms} checkSeasonality={checkSeasonality}></RoomTable>
     )
 }

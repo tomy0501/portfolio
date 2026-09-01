@@ -12,11 +12,11 @@ type RoomTableProperty = {
     isLoading:boolean,
     errorMessage:string,
     rooms:Room[] | null,
-    gotoRoomDetail: (roomID:string) => void
+    checkSeasonality: (seasonalityID:string) => void
 }
 
 
-export const RoomTable = ({isLoading,errorMessage,rooms,gotoRoomDetail}:RoomTableProperty) =>{
+export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality}:RoomTableProperty) =>{
     if(isLoading){
         return <p>読み込み中…</p>
     }
@@ -29,16 +29,25 @@ export const RoomTable = ({isLoading,errorMessage,rooms,gotoRoomDetail}:RoomTabl
                     <TableRow>
                         <TableHead>部屋名</TableHead>
                         <TableHead>部屋タイプ名</TableHead>
+                        <TableHead>シーズナリティ名</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {rooms.map(value => {
                         return (
+                            value.SeasonalityID !== null && value.SeasonalityName !== null ?
                             <TableRow key={value.RoomID} onClick={() =>{
-                                gotoRoomDetail(value.RoomTypeID)
+                                checkSeasonality(value.SeasonalityID as string)
                             }}>
                                 <TableCell>{value.RoomName}</TableCell>
                                 <TableCell>{value.RoomType}</TableCell>
+                                <TableCell>{value.SeasonalityName}</TableCell>
+                            </TableRow>
+                            :
+                            <TableRow key={value.RoomID}>
+                                <TableCell>{value.RoomName}</TableCell>
+                                <TableCell>{value.RoomType}</TableCell>
+                                <TableCell>未設定</TableCell>
                             </TableRow>
                         )
                     })}
