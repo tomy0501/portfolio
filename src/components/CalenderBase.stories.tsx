@@ -12,7 +12,7 @@ const meta: Meta<typeof DatePriceCalendar> = {
 
 export default meta
 
-function getThisMonth(date:Date) : Date[]{
+function getThisMonth(date:Date) : string[]{
     const year = date.getFullYear()
     const month = date.getMonth()
     const totalDays = new Date(year,month + 1,0).getDate()
@@ -20,7 +20,7 @@ function getThisMonth(date:Date) : Date[]{
     const yearMonthDays = Array.from(
         {length:totalDays},
         (_,i) => {
-            return new Date(year,month,i + 1)
+            return new Date(year,month,i + 1).toDateString()
         }
     )
     return yearMonthDays

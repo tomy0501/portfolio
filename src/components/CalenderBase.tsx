@@ -39,7 +39,7 @@ export const DatePriceCalendar = ({calenderPrices,errorMessage,isLoading}:{ cale
         return <TableRow><TableCell>カレンダーが存在しません</TableCell></TableRow>
     }
     const tempDate = [...calenderPrices]
-    const firstDate = tempDate[0].date.getDay()
+    const firstDate = new Date(tempDate[0].date).getDay()
     const weeks = []
     let i = 0;
     const firstRow = <TableRow>
@@ -108,7 +108,7 @@ export const DatePriceCell  = ({calenderPrices}:{calenderPrices:CalenderPrice}) 
     }
     return(
         <TableCell>
-            <p>{calenderPrices.date.getDate()}日</p>
+            <p>{new Date(calenderPrices.date).getDate()}日</p>
             {calenderPrices.seasonality.length === 0 ? <p>値段が設定されてません</p>:
             <ul onClick={mouseClickEvent}>{toggle ? calenderPrices.seasonality.map(value => {
                     return (
