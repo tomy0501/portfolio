@@ -47,7 +47,7 @@ export const StockCalender = () => {
     useEffect(() =>{
         const fetchStock = async() => {
             try{
-                const result = await api.get<RoomStockMessage>(`stockAPI/stock/${roomType}/${year}/${month}`)
+                const result = await api.get<RoomStockMessage>(`/stockAPI/stock/${roomType}/${year}/${month}`)
                 if(result.status !== 200){
                     throw new Error("cannot accept")
                 }
