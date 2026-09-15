@@ -32,6 +32,9 @@ export const RoomPage = () =>{
     const checkSeasonality = (seasonalityID:string) =>{
         navigate(`/price/${hotelID}/${seasonalityID}/${formattedDate}`)
     }
+    const checkStock = (roomTypeID:string) =>{
+        navigate(`/stock/${hotelID}/${roomTypeID}/${year}/${now.getMonth() + 1}`)
+    }
     useEffect(() =>{
         const roomGetter = async () =>{
             try{
@@ -53,6 +56,6 @@ export const RoomPage = () =>{
     },[])
     
     return (
-        <RoomTable errorMessage={errorMessage} isLoading={isLoading} rooms={rooms} checkSeasonality={checkSeasonality}></RoomTable>
+        <RoomTable errorMessage={errorMessage} isLoading={isLoading} rooms={rooms} checkSeasonality={checkSeasonality} checkStock={checkStock}></RoomTable>
     )
 }

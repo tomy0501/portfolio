@@ -10,6 +10,7 @@ import { NotFound } from "./page/NotFound";
 import { Seasonality } from "./page/Seasonality";
 import { Customer } from "./page/Customer";
 import { RoomPrice } from "./page/RoomPrices";
+import { StockCalender } from "./page/StockCalender";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
                     {
                         path:"/price/:hotelID/:roomTypeID/:month",
                         element:<RoomPrice/>
+                    },
+                    {
+                        path:"/stock/:hotelID/:roomTypeID:/month/:year",
+                        element:<StockCalender/>
                     },
                     {
                         path:"*",

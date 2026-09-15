@@ -12,11 +12,12 @@ type RoomTableProperty = {
     isLoading:boolean,
     errorMessage:string,
     rooms:Room[] | null,
-    checkSeasonality: (seasonalityID:string) => void
+    checkSeasonality: (seasonalityID:string) => void,
+    checkStock:(roomTypeID:string) => void
 }
 
 
-export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality}:RoomTableProperty) =>{
+export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality,checkStock}:RoomTableProperty) =>{
     if(isLoading){
         return <p>読み込み中…</p>
     }
@@ -30,6 +31,7 @@ export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality}:RoomTa
                         <TableHead>部屋名</TableHead>
                         <TableHead>部屋タイプ名</TableHead>
                         <TableHead>シーズナリティ名</TableHead>
+                        <TableHead>在庫数</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -42,12 +44,16 @@ export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality}:RoomTa
                                 <TableCell>{value.RoomName}</TableCell>
                                 <TableCell>{value.RoomType}</TableCell>
                                 <TableCell>{value.SeasonalityName}</TableCell>
+                                <TableCell onClick={() =>{
+                                    checkStock(value.RoomTypeID)
+                                }}>在庫を見る。</TableCell>
                             </TableRow>
                             :
                             <TableRow key={value.RoomID}>
                                 <TableCell>{value.RoomName}</TableCell>
                                 <TableCell>{value.RoomType}</TableCell>
                                 <TableCell>未設定</TableCell>
+                                <TableCell>設定してください</TableCell>
                             </TableRow>
                         )
                     })}
