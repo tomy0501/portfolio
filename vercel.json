@@ -9,11 +9,11 @@
         "destination": "https://goapp-84ab.onrender.com/:path*"
     },
     {
-      "source": "/stockApi/:path*",
+      "source": "/stockAPI/:path*",
       "destination": "https://stock-8ets.onrender.com/:path*"
     },
     {
-      "source": "/((?!api/|auth/|stockApi/).*)",
+      "source": "/((?!api/|auth/|stockAPI/).*)",
       "destination": "/index.html"
     }
   ]
