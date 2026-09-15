@@ -60,7 +60,7 @@ export const StockCalender = () => {
             
         }
         fetchStock()
-    })
+    },[])
     return (
         <StockCalenderComponent isLoading={isLoading} date={date} errorMessage={errorMessage} calenderStocks={roomStock} apiFunction={apiFunction}/>
     )
