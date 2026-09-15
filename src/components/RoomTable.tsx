@@ -38,12 +38,12 @@ export const RoomTable = ({isLoading,errorMessage,rooms,checkSeasonality,checkSt
                     {rooms.map(value => {
                         return (
                             value.SeasonalityID !== null && value.SeasonalityName !== null ?
-                            <TableRow key={value.RoomID} onClick={() =>{
-                                checkSeasonality(value.SeasonalityID as string)
-                            }}>
-                                <TableCell>{value.RoomName}</TableCell>
+                            <TableRow key={value.RoomID} >
+                                <TableCell >{value.RoomName}</TableCell>
                                 <TableCell>{value.RoomType}</TableCell>
-                                <TableCell>{value.SeasonalityName}</TableCell>
+                                <TableCell　onClick={() =>{
+                                checkSeasonality(value.SeasonalityID as string)
+                            }}>{value.SeasonalityName}</TableCell>
                                 <TableCell onClick={() =>{
                                     checkStock(value.RoomTypeID)
                                 }}>在庫を見る。</TableCell>

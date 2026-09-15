@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
                         element:<RoomPrice/>
                     },
                     {
-                        path:"/stock/:hotelID/:roomTypeID:/month/:year",
+                        path:"/stock/:hotelID/:roomTypeID:/:month/:year",
                         element:<StockCalender/>
                     },
                     {
