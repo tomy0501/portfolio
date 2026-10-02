@@ -40,14 +40,14 @@ export const StockCalender = () => {
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const [errorMessage,setErrorMessage] = useState<string>("")
     const [roomStock,setRoomStock] = useState<RoomStocks|null>(null)
-    const {roomTypeID,year,month} = useParams()
+    const {hotelID,roomTypeID,year,month} = useParams()
     const parseYear = Number(year)
     const parseMonth = Number(month)
     const date = new Date(parseYear,parseMonth - 1)
     useEffect(() =>{
         const fetchStock = async() => {
             try{
-                const result = await api.get<RoomStockMessage>(`/stockAPI/stock/${roomTypeID}/${year}/${month}`)
+                const result = await api.get<RoomStockMessage>(`/stockAPI/stock/${hotelID}/${roomTypeID}/${year}/${month}`)
                 if(result.status !== 200){
                     throw new Error("cannot accept")
                 }
