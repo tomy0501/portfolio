@@ -7,14 +7,13 @@ import { StockCalenderComponent } from "@/components/StockCalenderComponent"
 export type StockCalender= {
     date: string,
     stock: number,
-    reservation: number,
-    stopSelNumber: number
+    reserved: number,
+    stopped: number
 }
 
 export type RoomStocks = {
-    roomTypeID: string,
-    roomTypeName:string,
-    RoomStocks: StockCalender[]
+    room_type_id: string,
+    stock_data: StockCalender[]
 }
 
 export type StockChangeMessage = {

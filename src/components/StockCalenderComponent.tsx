@@ -47,7 +47,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 firstRow.push(cell)
                                         }
                                         for(let j = firstDate; j < 7; j++){
-                                                const calenderStock = calenderStocks.RoomStocks.filter(value => {
+                                                const calenderStock = calenderStocks.stock_data.filter(value => {
                                                         value.date === yearMonthDays[nowDate].toDateString()
                                                 })
                                                 if(calenderStock.length === 0){
@@ -55,8 +55,8 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                         firstRow.push(cell)
                                                 }else if(calenderStock.length === 1){
                                                         const cell = <StockDateCell apiFunction={apiFunction} 
-                                                        stock={calenderStock[0].stock} reserve={calenderStock[0].reservation}
-                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopSelNumber}></StockDateCell>
+                                                        stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
+                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped}></StockDateCell>
                                                         firstRow.push(cell)
                                                 }else{
                                                         const cell = <TableCell>
@@ -78,7 +78,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 const week = []
                                                 for(let i = 0;i < 7; i++){
                                                         if(nowDate < yearMonthDays.length){
-                                                                const calenderStock = calenderStocks.RoomStocks.filter(value => {
+                                                                const calenderStock = calenderStocks.stock_data.filter(value => {
                                                                         value.date === yearMonthDays[nowDate].toDateString()
                                                                 })
                                                                 if(calenderStock.length === 0){
@@ -86,8 +86,8 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                                         week.push(cell)
                                                                 }else if(calenderStock.length === 1){
                                                                         const cell = <StockDateCell apiFunction={apiFunction} 
-                                                                        stock={calenderStock[0].stock} reserve={calenderStock[0].reservation}
-                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopSelNumber}></StockDateCell>
+                                                                        stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
+                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped}></StockDateCell>
                                                                         week.push(cell)
                                                                 }else{
                                                                         const cell = <TableCell>
