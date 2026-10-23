@@ -176,8 +176,8 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         })
                 }
                 return(
-                        <TableCell>
-                                
+                        <TableCell className=''>
+                                <div className='flex justify-center'>
                                 <label >
                                         在庫数
                                         <input className="w-10" type='number' value={stockNumber} onChange={(event) => {
@@ -202,7 +202,8 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 setStopSelNumber(newStopSelNumber)
                                         }}></input>
                                 </label>
-                                <button onClick={postNewStock}>変更する</button>
+                                </div>
+                                <button className="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded" onClick={postNewStock}>変更する</button>
                         </TableCell>
                 )
         }
