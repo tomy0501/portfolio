@@ -176,11 +176,11 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         })
                 }
                 return(
-                        <TableCell>
+                        <TableCell className='flex flex-col'>
                                 
                                 <label >
                                         在庫数
-                                        <input type='number' value={stockNumber} onChange={(event) => {
+                                        <input className="w-10" type='number' value={stockNumber} onChange={(event) => {
                                                 event.preventDefault()
                                                 const newStockNumber = Number(event.target.value)
                                                 setStockNumber(newStockNumber)
@@ -188,7 +188,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 </label>
                                 <label>
                                         予約数
-                                        <input type='number' value={reserveNumber} onChange={(event) =>{
+                                        <input className="w-10" type='number' value={reserveNumber} onChange={(event) =>{
                                                 event.preventDefault()
                                                 const newReserveNumber = Number(event.target.value)
                                                 setReserveNumber(newReserveNumber)
@@ -196,7 +196,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 </label>
                                 <label>
                                         売り止め数
-                                        <input type='number' value={stopSelNumber} onChange={(event) =>{
+                                        <input className="w-10" type='number' value={stopSelNumber} onChange={(event) =>{
                                                 event.preventDefault()
                                                 const newStopSelNumber = Number(event.target.value)
                                                 setStopSelNumber(newStopSelNumber)
