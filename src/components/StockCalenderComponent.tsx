@@ -54,7 +54,11 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                         return formmattedSeasonalityDate === formattedYearMonthDays
                                                 })
                                                 if(calenderStock.length === 0){
-                                                        const cell = <TableCell>在庫がありません。</TableCell>
+                                                        const cell = <TableCell>
+                                                                <div><p>{yearMonthDays[nowDate].getDate()}日</p>
+                                                                <p>在庫がありません。</p>
+                                                                </div>
+                                                                </TableCell>
                                                         firstRow.push(cell)
                                                 }else if(calenderStock.length === 1){
                                                         const cell = <StockDateCell apiFunction={apiFunction} 
@@ -63,7 +67,10 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                         firstRow.push(cell)
                                                 }else{
                                                         const cell = <TableCell>
-                                                                <p>この日付の在庫データが不正です</p>
+                                                                <div>
+                                                                        <p>{yearMonthDays[nowDate].getDate()}日</p>
+                                                                        <p>この日付の在庫データが不正です</p>
+                                                                </div>          
                                                         </TableCell>
                                                         firstRow.push(cell)
                                                 }
@@ -178,6 +185,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                 return(
                         <TableCell className=''>
                                 <div className='flex justify-center flex-col gap-2'>
+                                        <p>{date.getDate()}日</p>
                                 <label >
                                         在庫数
                                         <input className="w-10" type='number' value={stockNumber} onChange={(event) => {
