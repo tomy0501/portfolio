@@ -6,7 +6,7 @@ import { Table,
  import { CalenderHeader } from './CalenderBase'
  import type { RoomStocks,StockProperty,StockChangeMessage } from '@/page/StockCalender'
  import { useState } from 'react'
-
+import { DEFAULT_DATE_FORMAT } from '@/utils/formatter'
 
  
 export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,date,apiFunction}:{isLoading:boolean,errorMessage:string,calenderStocks:RoomStocks|null,date:Date,
@@ -49,7 +49,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                         }
                                         for(let j = firstDate; j < 7; j++){
                                                 const calenderStock = calenderStocks.stock_data.filter(value => {
-                                                        value.date === yearMonthDays[nowDate].toDateString()
+                                                        const formmattedSeasonalityDate = DEFAULT_DATE_FORMAT.format(new Date(value.date))
+                                                        const formattedYearMonthDays = DEFAULT_DATE_FORMAT.format(new Date(yearMonthDays[nowDate]))
+                                                        return formmattedSeasonalityDate === formattedYearMonthDays
                                                 })
                                                 if(calenderStock.length === 0){
                                                         const cell = <TableCell>在庫がありません。</TableCell>
@@ -81,7 +83,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                         if(nowDate < yearMonthDays.length){
                                                                 console.log(yearMonthDays[nowDate].toDateString())
                                                                 const calenderStock = calenderStocks.stock_data.filter(value => {
-                                                                        value.date === yearMonthDays[nowDate].toDateString()
+                                                                        const formmattedSeasonalityDate = DEFAULT_DATE_FORMAT.format(new Date(value.date))
+                                                                        const formattedYearMonthDays = DEFAULT_DATE_FORMAT.format(new Date(yearMonthDays[nowDate]))
+                                                                        return formmattedSeasonalityDate === formattedYearMonthDays
                                                                 })
 
                                                                 if(calenderStock.length === 0){
