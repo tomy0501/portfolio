@@ -177,7 +177,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                 }
                 return(
                         <TableCell className=''>
-                                <div className='flex justify-center'>
+                                <div className='flex justify-center flex-col gap-2'>
                                 <label >
                                         在庫数
                                         <input className="w-10" type='number' value={stockNumber} onChange={(event) => {
