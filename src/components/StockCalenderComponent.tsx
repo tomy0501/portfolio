@@ -79,9 +79,11 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 const week = []
                                                 for(let i = 0;i < 7; i++){
                                                         if(nowDate < yearMonthDays.length){
+                                                                console.log(yearMonthDays[nowDate].toDateString())
                                                                 const calenderStock = calenderStocks.stock_data.filter(value => {
                                                                         value.date === yearMonthDays[nowDate].toDateString()
                                                                 })
+
                                                                 if(calenderStock.length === 0){
                                                                         const cell = <TableCell>在庫がありません。</TableCell>
                                                                         week.push(cell)
