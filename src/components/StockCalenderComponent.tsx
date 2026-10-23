@@ -176,7 +176,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         })
                 }
                 return(
-                        <TableCell className='flex flex-col'>
+                        <TableCell>
                                 
                                 <label >
                                         在庫数
