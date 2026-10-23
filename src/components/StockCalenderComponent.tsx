@@ -25,6 +25,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
         if(calenderStocks === null){
                 return <p>カレンダーが読み込めませんでした。</p>
         }else{
+                console.log(calenderStocks)
                 const year = date.getFullYear()
                 const month = date.getMonth()
                 const totalDays = new Date(year,month + 1,0).getDate()
