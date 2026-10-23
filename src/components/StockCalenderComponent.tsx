@@ -106,7 +106,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 }
                         </TableRow>
                         week.push(nextRow)
-                      
+                      console.log(week)
                 }
                 return (
                         <Table>
