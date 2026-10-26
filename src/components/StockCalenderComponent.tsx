@@ -142,13 +142,13 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                 let preReserveNumber = reserve;
                 let preStopSelNumber = stopSel;
                 const stockChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(date.toDateString(),'stock',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stock',number)
                 }
                 const reserveChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(date.toDateString(),'reserve',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserve',number)
                 }
                 const stopSelChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(date.toDateString(),'stopCell',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopCell',number)
                 }
                 const [stockNumber,setStockNumber] = useState<number>(stock)
                 const [reserveNumber,setReserveNumber] = useState<number>(reserve)
