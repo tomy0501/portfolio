@@ -148,7 +148,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserve',number)
                 }
                 const stopSelChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopCell',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopSell',number)
                 }
                 const [stockNumber,setStockNumber] = useState<number>(stock)
                 const [reserveNumber,setReserveNumber] = useState<number>(reserve)
@@ -175,7 +175,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 alert("予約数が変更されました。")
                                                 preReserveNumber = status.afterChangeNumber
                                         }
-                                        if(status.stockType === 'stopCell'){
+                                        if(status.stockType === 'stopSell'){
                                                 alert("売り止め数が変更されました。")
                                                 preStockNumber = status.afterChangeNumber
                                         }
