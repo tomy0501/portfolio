@@ -9,8 +9,8 @@ import { Table,
 import { DEFAULT_DATE_FORMAT } from '@/utils/formatter'
 
  
-export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,date,apiFunction}:{isLoading:boolean,errorMessage:string,calenderStocks:RoomStocks|null,date:Date,
-        apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number) => Promise<StockChangeMessage>
+export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,date,apiFunction,hotelID,roomTypeID}:{isLoading:boolean,errorMessage:string,calenderStocks:RoomStocks|null,date:Date,hotelID:string|undefined,roomTypeID:string|undefined,
+        apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>
 }) => {
         if(isLoading){
                 return (
@@ -21,6 +21,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                 return (
                         <p>{errorMessage}</p>
                 )
+        }
+        if(hotelID === undefined || roomTypeID === undefined){
+                return <p>ホテルIDまたは部屋タイプIDが不正です。</p>
         }
         if(calenderStocks === null){
                 return <p>カレンダーが読み込めませんでした。</p>
@@ -63,7 +66,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 }else if(calenderStock.length === 1){
                                                         const cell = <StockDateCell apiFunction={apiFunction} 
                                                         stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
-                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped}></StockDateCell>
+                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
                                                         firstRow.push(cell)
                                                 }else{
                                                         const cell = <TableCell>
@@ -101,7 +104,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                                 }else if(calenderStock.length === 1){
                                                                         const cell = <StockDateCell apiFunction={apiFunction} 
                                                                         stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
-                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped}></StockDateCell>
+                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
                                                                         week.push(cell)
                                                                 }else{
                                                                         const cell = <TableCell>
@@ -135,20 +138,20 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
 
  }
 
- export const StockDateCell = ({apiFunction,stock,reserve,stopSel,date}:
-        {stock:number,reserve:number,stopSel:number,date:Date,
-                apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number) => Promise<StockChangeMessage>}) =>{
+ export const StockDateCell = ({apiFunction,stock,reserve,stopSel,date,hotelID,roomTypeID}:
+        {stock:number,reserve:number,stopSel:number,date:Date,hotelID:string,roomTypeID:string,
+                apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
                 let preStockNumber = stock;
                 let preReserveNumber = reserve;
                 let preStopSelNumber = stopSel;
                 const stockChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stock',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stock',number,hotelID,roomTypeID)
                 }
                 const reserveChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserve',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserve',number,hotelID,roomTypeID)
                 }
                 const stopSelChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopSell',number)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopSell',number,hotelID,roomTypeID)
                 }
                 const [stockNumber,setStockNumber] = useState<number>(stock)
                 const [reserveNumber,setReserveNumber] = useState<number>(reserve)

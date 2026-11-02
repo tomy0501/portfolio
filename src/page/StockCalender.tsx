@@ -29,8 +29,8 @@ type RoomStockMessage = {
     roomStocks:RoomStocks
 }
 export const StockCalender = () => {
-    const apiFunction = async (changeDate:string,changeProperty:StockProperty,newNumber:number) : Promise<StockChangeMessage> =>{
-        const result =  await api.get<StockChangeMessage>(`/stockAPI/stockChange/${changeProperty}/${changeDate}/${newNumber}`)
+    const apiFunction = async (changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) : Promise<StockChangeMessage> =>{
+        const result =  await api.get<StockChangeMessage>(`/stockAPI/stockChange/${changeProperty}/${hotelID}/${roomTypeID}/${changeDate}/${newNumber}`)
         if(result.status !== 200){
             throw new Error("cannnot get stock")
         }
@@ -61,6 +61,6 @@ export const StockCalender = () => {
         fetchStock()
     },[])
     return (
-        <StockCalenderComponent isLoading={isLoading} date={date} errorMessage={errorMessage} calenderStocks={roomStock} apiFunction={apiFunction}/>
+        <StockCalenderComponent isLoading={isLoading} date={date} errorMessage={errorMessage} calenderStocks={roomStock} apiFunction={apiFunction} hotelID={hotelID} roomTypeID={roomTypeID}/>
     )
 }
