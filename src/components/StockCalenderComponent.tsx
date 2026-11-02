@@ -148,7 +148,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stock',number,hotelID,roomTypeID)
                 }
                 const reserveChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserve',number,hotelID,roomTypeID)
+                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserved',number,hotelID,roomTypeID)
                 }
                 const stopSelChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
                         return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopSell',number,hotelID,roomTypeID)
@@ -174,7 +174,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 alert('在庫が変更されました。')
                                                 preStockNumber = status.afterChangeNumber
                                         }
-                                        if(status.stockType === 'reserve'){
+                                        if(status.stockType === 'reserved'){
                                                 alert("予約数が変更されました。")
                                                 preReserveNumber = status.afterChangeNumber
                                         }

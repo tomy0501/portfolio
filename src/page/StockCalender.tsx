@@ -22,7 +22,7 @@ export type StockChangeMessage = {
     beforeChangeNumber :number
 }
 
-export type StockProperty = 'stock' | 'reserve' | 'stopSell'
+export type StockProperty = 'stock' | 'reserved' | 'stopSell'
 
 type RoomStockMessage = {
     message:string,
