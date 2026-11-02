@@ -30,7 +30,7 @@ type RoomStockMessage = {
 }
 export const StockCalender = () => {
     const apiFunction = async (changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) : Promise<StockChangeMessage> =>{
-        const result =  await api.get<StockChangeMessage>(`/stockAPI/stockChange/${changeProperty}/${hotelID}/${roomTypeID}/${changeDate}/${newNumber}`)
+        const result =  await api.post<StockChangeMessage>(`/stockAPI/stockChange/${changeProperty}/${hotelID}/${roomTypeID}/${changeDate}/${newNumber}`)
         if(result.status !== 200){
             throw new Error("cannnot get stock")
         }
