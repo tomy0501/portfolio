@@ -66,7 +66,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                 }else if(calenderStock.length === 1){
                                                         const cell = <StockDateCell apiFunction={apiFunction} 
                                                         stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
-                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
+                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopSell} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
                                                         firstRow.push(cell)
                                                 }else{
                                                         const cell = <TableCell>
@@ -104,7 +104,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                                                 }else if(calenderStock.length === 1){
                                                                         const cell = <StockDateCell apiFunction={apiFunction} 
                                                                         stock={calenderStock[0].stock} reserve={calenderStock[0].reserved}
-                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopped} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
+                                                                        date={yearMonthDays[nowDate]} stopSel={calenderStock[0].stopSell} hotelID={hotelID} roomTypeID={roomTypeID}></StockDateCell>
                                                                         week.push(cell)
                                                                 }else{
                                                                         const cell = <TableCell>

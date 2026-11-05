@@ -8,7 +8,7 @@ export type StockCalender= {
     date: string,
     stock: number,
     reserved: number,
-    stopped: number
+    stopSell: number
 }
 
 export type RoomStocks = {
