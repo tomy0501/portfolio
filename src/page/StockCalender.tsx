@@ -39,6 +39,10 @@ export const StockCalender = () => {
             roomTypeID:roomTypeID,
             changeDate:changeDate,
             stockChengePropertys:stockChangeProperties
+        },{
+            headers:{
+                "Content-Type":"application/json"
+            }
         })
         if(result.status !== 200){
             throw new Error("cannot accept")
