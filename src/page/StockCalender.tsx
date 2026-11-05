@@ -32,11 +32,11 @@ type RoomStockMessage = {
 export const StockCalender = () => {
     const apiFunction = async (changeDate:string,stock:number|null,reserved:number|null,stopSell:number|null,hotelID:string,roomTypeID:string) : Promise<StockChangeMessage> =>{
         const result =  await api.post<StockChangeMessage>(`/stockAPI/stockChangeAPI/stock/${hotelID}`,{
-            RoomTypeID:roomTypeID,
-            Date:changeDate,
-            Stock:stock,
-            Reserved:reserved,
-            StopSell:stopSell
+            room_type_id:roomTypeID,
+            date:changeDate,
+            stock:stock,
+            reserved:reserved,
+            stopSell:stopSell
         },{
             headers:{
                 "Content-Type":"application/json"
