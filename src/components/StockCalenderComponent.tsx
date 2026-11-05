@@ -158,9 +158,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 return
                         }
                         apiFunction(DEFAULT_DATE_FORMAT.format(date),stockNumber,reserveNumber,stopSelNumber,hotelID,roomTypeID).then((result) =>{
-                                setPreStockNumber(result.beforeChangeNumber)
-                                setPreReserveNumber(result.beforeChangeNumber)
-                                setPreStopSelNumber(result.beforeChangeNumber)
+                                setPreStockNumber(stockNumber)
+                                setPreReserveNumber(reserveNumber)
+                                setPreStopSelNumber(stopSelNumber)
                         }).catch((error) =>{
                                 console.error(error)
                                 alert("在庫変更に失敗しました。")
