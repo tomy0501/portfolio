@@ -4,13 +4,13 @@ import { Table,
         TableRow
  } from './ui/table'
  import { CalenderHeader } from './CalenderBase'
- import type { RoomStocks,StockChangeMessage,StockChangeProperty} from '@/page/StockCalender'
+ import type { RoomStocks,StockChangeMessage,} from '@/page/StockCalender'
  import { useState } from 'react'
 import { DEFAULT_DATE_FORMAT } from '@/utils/formatter'
 
  
 export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,date,apiFunction,hotelID,roomTypeID}:{isLoading:boolean,errorMessage:string,calenderStocks:RoomStocks|null,date:Date,hotelID:string|undefined,roomTypeID:string|undefined,
-        apiFunction:(changeDate:string,stockChangeProperties:StockChangeProperty[],hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>
+        apiFunction:(changeDate:string,stock:number|null,reserved:number|null,stopSell:number|null,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>
 }) => {
         if(isLoading){
                 return (
@@ -140,7 +140,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
 
  export const StockDateCell = ({apiFunction,stock,reserve,stopSel,date,hotelID,roomTypeID}:
         {stock:number,reserve:number,stopSel:number,date:Date,hotelID:string,roomTypeID:string,
-                apiFunction:(changeDate:string,stockChangeProperties:StockChangeProperty[],hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
+                apiFunction:(changeDate:string,stock:number|null,reserved:number|null,stopSell:number|null,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
                 let preStockNumber = stock;
                 let preReserveNumber = reserve;
                 let preStopSelNumber = stopSel;
@@ -149,29 +149,15 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                 const [stopSelNumber,setStopSelNumber] = useState<number>(stopSel)
                 const postNewStock = (event:React.MouseEvent) =>{
                         event.preventDefault()
-                        const changeFuncArray = new Array<StockChangeProperty>()
-                        if(preStockNumber !== stockNumber){
-                                const changeProperty:StockChangeProperty = {
-                                        changeProperty:'stock',
-                                        newNumber:stockNumber
-                                }
-                                changeFuncArray.push(changeProperty)
+                        if(hotelID === undefined || roomTypeID === undefined){
+                                alert("ホテルIDまたは部屋タイプIDが不正です。")
+                                return
                         }
-                        if(preReserveNumber !== reserveNumber){
-                                const changeProperty:StockChangeProperty = {
-                                        changeProperty:'reserved',
-                                        newNumber:reserveNumber
-                                }
-                                changeFuncArray.push(changeProperty)
+                        if(preStockNumber === stockNumber && preReserveNumber === reserveNumber && preStopSelNumber === stopSelNumber){
+                                alert("在庫数、予約数、売り止め数に変更がありません。")
+                                return
                         }
-                        if(preStopSelNumber !== stopSelNumber){
-                                const changeProperty:StockChangeProperty = {
-                                        changeProperty:'stopSell',
-                                        newNumber:stopSelNumber
-                                }
-                                changeFuncArray.push(changeProperty)
-                        }
-                        apiFunction(DEFAULT_DATE_FORMAT.format(date),changeFuncArray,hotelID,roomTypeID).then((result) =>{
+                        apiFunction(DEFAULT_DATE_FORMAT.format(date),stockNumber,reserveNumber,stopSelNumber,hotelID,roomTypeID).then((result) =>{
                                 preStockNumber = result.beforeChangeNumber
                                 preReserveNumber = result.beforeChangeNumber
                                 preStopSelNumber = result.beforeChangeNumber
