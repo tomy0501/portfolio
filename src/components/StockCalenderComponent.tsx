@@ -151,13 +151,25 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                         event.preventDefault()
                         const changeFuncArray = new Array<StockChangeProperty>()
                         if(preStockNumber !== stockNumber){
-                                changeFuncArray.push({changeProperty:'stock',newNumber:stockNumber})
+                                const changeProperty:StockChangeProperty = {
+                                        changeProperty:'stock',
+                                        newNumber:stockNumber
+                                }
+                                changeFuncArray.push(changeProperty)
                         }
                         if(preReserveNumber !== reserveNumber){
-                                changeFuncArray.push({changeProperty:'reserved',newNumber:reserveNumber})
+                                const changeProperty:StockChangeProperty = {
+                                        changeProperty:'reserved',
+                                        newNumber:reserveNumber
+                                }
+                                changeFuncArray.push(changeProperty)
                         }
                         if(preStopSelNumber !== stopSelNumber){
-                                changeFuncArray.push({changeProperty:'stopSell',newNumber:stopSelNumber})
+                                const changeProperty:StockChangeProperty = {
+                                        changeProperty:'stopSell',
+                                        newNumber:stopSelNumber
+                                }
+                                changeFuncArray.push(changeProperty)
                         }
                         apiFunction(DEFAULT_DATE_FORMAT.format(date),changeFuncArray,hotelID,roomTypeID).then((result) =>{
                                 preStockNumber = result.beforeChangeNumber
