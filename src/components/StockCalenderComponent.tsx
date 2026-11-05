@@ -141,9 +141,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
  export const StockDateCell = ({apiFunction,stock,reserve,stopSel,date,hotelID,roomTypeID}:
         {stock:number,reserve:number,stopSel:number,date:Date,hotelID:string,roomTypeID:string,
                 apiFunction:(changeDate:string,stock:number|null,reserved:number|null,stopSell:number|null,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
-                let preStockNumber = stock;
-                let preReserveNumber = reserve;
-                let preStopSelNumber = stopSel;
+                const [preStockNumber,setPreStockNumber] = useState<number>(stock)
+                const [preReserveNumber,setPreReserveNumber] = useState<number>(reserve)
+                const [preStopSelNumber,setPreStopSelNumber] = useState<number>(stopSel)
                 const [stockNumber,setStockNumber] = useState<number>(stock)
                 const [reserveNumber,setReserveNumber] = useState<number>(reserve)
                 const [stopSelNumber,setStopSelNumber] = useState<number>(stopSel)
@@ -158,9 +158,9 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 return
                         }
                         apiFunction(DEFAULT_DATE_FORMAT.format(date),stockNumber,reserveNumber,stopSelNumber,hotelID,roomTypeID).then((result) =>{
-                                preStockNumber = result.beforeChangeNumber
-                                preReserveNumber = result.beforeChangeNumber
-                                preStopSelNumber = result.beforeChangeNumber
+                                setPreStockNumber(result.beforeChangeNumber)
+                                setPreReserveNumber(result.beforeChangeNumber)
+                                setPreStopSelNumber(result.beforeChangeNumber)
                         }).catch((error) =>{
                                 console.error(error)
                                 alert("在庫変更に失敗しました。")
