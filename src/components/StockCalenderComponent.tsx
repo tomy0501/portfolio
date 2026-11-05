@@ -4,13 +4,13 @@ import { Table,
         TableRow
  } from './ui/table'
  import { CalenderHeader } from './CalenderBase'
- import type { RoomStocks,StockProperty,StockChangeMessage } from '@/page/StockCalender'
+ import type { RoomStocks,StockChangeMessage,StockChangeProperty} from '@/page/StockCalender'
  import { useState } from 'react'
 import { DEFAULT_DATE_FORMAT } from '@/utils/formatter'
 
  
 export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,date,apiFunction,hotelID,roomTypeID}:{isLoading:boolean,errorMessage:string,calenderStocks:RoomStocks|null,date:Date,hotelID:string|undefined,roomTypeID:string|undefined,
-        apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>
+        apiFunction:(changeDate:string,stockChangeProperties:StockChangeProperty[],hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>
 }) => {
         if(isLoading){
                 return (
@@ -140,50 +140,33 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
 
  export const StockDateCell = ({apiFunction,stock,reserve,stopSel,date,hotelID,roomTypeID}:
         {stock:number,reserve:number,stopSel:number,date:Date,hotelID:string,roomTypeID:string,
-                apiFunction:(changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
+                apiFunction:(changeDate:string,stockChangeProperties:StockChangeProperty[],hotelID:string,roomTypeID:string) => Promise<StockChangeMessage>}) =>{
                 let preStockNumber = stock;
                 let preReserveNumber = reserve;
                 let preStopSelNumber = stopSel;
-                const stockChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stock',number,hotelID,roomTypeID)
-                }
-                const reserveChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'reserved',number,hotelID,roomTypeID)
-                }
-                const stopSelChangeFunction = (number:number,date:Date) : Promise<StockChangeMessage> => {
-                        return apiFunction(DEFAULT_DATE_FORMAT.format(date),'stopSell',number,hotelID,roomTypeID)
-                }
                 const [stockNumber,setStockNumber] = useState<number>(stock)
                 const [reserveNumber,setReserveNumber] = useState<number>(reserve)
                 const [stopSelNumber,setStopSelNumber] = useState<number>(stopSel)
                 const postNewStock = (event:React.MouseEvent) =>{
                         event.preventDefault()
-                        const changeFuncArray = []
-                        if(preStockNumber - stockNumber !== 0){
-                                changeFuncArray.push(() => stockChangeFunction(stockNumber,date))
+                        const changeFuncArray = new Array<StockChangeProperty>()
+                        if(preStockNumber !== stockNumber){
+                                changeFuncArray.push({changeProperty:'stock',newNumber:stockNumber})
                         }
-                        if(preReserveNumber - reserveNumber !== 0){
-                                changeFuncArray.push(() => reserveChangeFunction(reserveNumber,date))
+                        if(preReserveNumber !== reserveNumber){
+                                changeFuncArray.push({changeProperty:'reserved',newNumber:reserveNumber})
                         }
-                        if(preStopSelNumber - stopSelNumber !== 0){
-                                changeFuncArray.push(() => stopSelChangeFunction(stopSelNumber,date))
+                        if(preStopSelNumber !== stopSelNumber){
+                                changeFuncArray.push({changeProperty:'stopSell',newNumber:stopSelNumber})
                         }
-                        Promise.all(changeFuncArray.map((task) =>task())).then(value =>{
-                                for(let status of value){
-                                        if(status.stockType === 'stock'){
-                                                alert('在庫が変更されました。')
-                                                preStockNumber = status.afterChangeNumber
-                                        }
-                                        if(status.stockType === 'reserved'){
-                                                alert("予約数が変更されました。")
-                                                preReserveNumber = status.afterChangeNumber
-                                        }
-                                        if(status.stockType === 'stopSell'){
-                                                alert("売り止め数が変更されました。")
-                                                preStockNumber = status.afterChangeNumber
-                                        }
-                                }
+                        apiFunction(DEFAULT_DATE_FORMAT.format(date),changeFuncArray,hotelID,roomTypeID).then((result) =>{
+                                preStockNumber = result.beforeChangeNumber
+                                preReserveNumber = result.beforeChangeNumber
+                                preStopSelNumber = result.beforeChangeNumber
+                        }).catch((error) =>{
+                                console.error(error)
                         })
+                        
                 }
                 return(
                         <TableCell className=''>

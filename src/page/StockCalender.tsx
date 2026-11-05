@@ -28,11 +28,20 @@ type RoomStockMessage = {
     message:string,
     roomStocks:RoomStocks
 }
+
+export type StockChangeProperty = {
+    changeProperty:StockProperty,
+    newNumber:number,
+}
 export const StockCalender = () => {
-    const apiFunction = async (changeDate:string,changeProperty:StockProperty,newNumber:number,hotelID:string,roomTypeID:string) : Promise<StockChangeMessage> =>{
-        const result =  await api.post<StockChangeMessage>(`/stockAPI/stockChange/${changeProperty}/${hotelID}/${roomTypeID}/${changeDate}/${newNumber}`)
+    const apiFunction = async (changeDate:string,stockChangeProperties:StockChangeProperty[],hotelID:string,roomTypeID:string) : Promise<StockChangeMessage> =>{
+        const result =  await api.post<StockChangeMessage>(`/stockAPI/stockChangeAPI/${hotelID}`,{
+            roomTypeID:roomTypeID,
+            changeDate:changeDate,
+            stockChengePropertys:stockChangeProperties
+        })
         if(result.status !== 200){
-            throw new Error("cannnot get stock")
+            throw new Error("cannot accept")
         }
         return result.data
     }
@@ -48,7 +57,7 @@ export const StockCalender = () => {
             try{
                 const result = await api.get<RoomStockMessage>(`/stockAPI/stock/${hotelID}/${roomTypeID}/${year}/${month}`)
                 if(result.status !== 200){
-                    throw new Error("cannot accept")
+                    return Promise.reject("cannot accept")
                 }
                 setRoomStock(result.data.roomStocks)
             }catch(error:any){
