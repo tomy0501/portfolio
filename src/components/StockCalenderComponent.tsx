@@ -165,6 +165,7 @@ export const StockCalenderComponent = ({isLoading,errorMessage,calenderStocks,da
                                 preStopSelNumber = result.beforeChangeNumber
                         }).catch((error) =>{
                                 console.error(error)
+                                alert("在庫変更に失敗しました。")
                         })
                         
                 }
