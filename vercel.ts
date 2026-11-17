@@ -3,7 +3,7 @@ import type { VercelConfig } from '@vercel/config/v1';
 const mainAPIURL = import.meta.env.VITE_MAIN_API || 'https://localhost:8080';
 const authAPIURL = import.meta.env.VITE_AUTH_API || 'https://localhost:8081';
 const stockAPIURL = import.meta.env.VITE_STOCK_API || 'https://localhost:8082';
-export const vercelConfig: VercelConfig = {
+export const config: VercelConfig = {
     rewrites: [
         {
             source: '/api/:path*',
@@ -14,7 +14,7 @@ export const vercelConfig: VercelConfig = {
             destination: `${authAPIURL}/:path*`,
         },
         {  
-            source: '/stock/:path*', 
+            source: '/stockAPI/:path*', 
             destination: `${stockAPIURL}/:path*` ,
         },
         {
