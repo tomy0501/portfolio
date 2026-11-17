@@ -1,9 +1,9 @@
 import type { VercelConfig ,} from '@vercel/config/v1';
 import {deploymentEnv,routes,} from '@vercel/config/v1';
 
-const mainAPIURL = import.meta.env.VITE_MAIN_API || 'https://localhost:8080';
-const authAPIURL = import.meta.env.VITE_AUTH_API || 'https://localhost:8081';
-const stockAPIURL = import.meta.env.VITE_STOCK_API || 'https://localhost:8082';
+const mainAPIURL = deploymentEnv('VITE_MAIN_API') || 'https://localhost:8080';
+const authAPIURL = deploymentEnv('VITE_AUTH_API') || 'https://localhost:8081';
+const stockAPIURL = deploymentEnv('VITE_STOCK_API') || 'https://localhost:8082';
 export const config: VercelConfig = {
     rewrites: [
         routes.rewrite('/auth/:path*', `${authAPIURL}/:path*`),
