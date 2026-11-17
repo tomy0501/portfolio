@@ -6,20 +6,20 @@ const stockAPIURL = import.meta.env.VITE_STOCK_API || 'https://localhost:8082';
 export const config: VercelConfig = {
     rewrites: [
         {
-            source: '/api/:path*',
-            destination: `${mainAPIURL}/:path*`,
+           "source": '/api/:path*',
+            "destination": `${mainAPIURL}/:path*`,
         },
         {
-            source: '/auth/:path*',
-            destination: `${authAPIURL}/:path*`,
+            "source": '/auth/:path*',
+            "destination": `${authAPIURL}/:path*`,
         },
         {  
-            source: '/stockAPI/:path*', 
-            destination: `${stockAPIURL}/:path*` ,
+            "source": '/stockAPI/:path*', 
+            "destination": `${stockAPIURL}/:path*` ,
         },
         {
-            source: "/((?!api/|auth/|stockAPI/).*)",
-            destination: "/index.html"
+            "source": "/((?!api/|auth/|stockAPI/).*)",
+            "destination": "/index.html"
         }
     ]
 }
