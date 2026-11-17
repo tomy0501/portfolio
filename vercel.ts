@@ -9,9 +9,9 @@ if(!mainAPIURL || !authAPIURL || !stockAPIURL) {
 }
 export const config: VercelConfig = {
     rewrites: [
-        routes.rewrite('/auth/(.*)', `${authAPIURL}$1`),
-        routes.rewrite('/stockAPI/(.*)', `${stockAPIURL}$1`),
-        routes.rewrite('/api/(.*)', `${mainAPIURL}$1`),
+        routes.rewrite('/auth/(.*)', `${authAPIURL}/$1`),
+        routes.rewrite('/stockAPI/(.*)', `${stockAPIURL}/$1`),
+        routes.rewrite('/api/(.*)', `${mainAPIURL}/$1`),
         routes.rewrite('/((?!api/|auth/|stockAPI/).*)', '/index.html'),
     ]
 }
