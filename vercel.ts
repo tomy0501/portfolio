@@ -1,9 +1,9 @@
 import type { VercelConfig ,} from '@vercel/config/v1';
 import {deploymentEnv,routes,} from '@vercel/config/v1';
 
-const mainAPIURL = deploymentEnv('VITE_MAIN_API');
-const authAPIURL = deploymentEnv('VITE_AUTH_API');
-const stockAPIURL = deploymentEnv('VITE_STOCK_API');
+const mainAPIURL = deploymentEnv('VITE_MAIN_API_URL');
+const authAPIURL = deploymentEnv('VITE_AUTH_API_URL');
+const stockAPIURL = deploymentEnv('VITE_STOCK_API_URL');
 if(!mainAPIURL || !authAPIURL || !stockAPIURL) {
     throw new Error("API URL is not defined in environment variables");
 }
